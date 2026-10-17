@@ -1,22 +1,24 @@
 #include "Game.h"
+#include "GameManager.h"
 #include "raylib.h"
+#include "Button.h"
 
 void Game()
 {
-	const int WINDOW_WIDTH = 1024;
-	const int WINDOW_HEIGHT = 768;
+	float delta = 0.0f;
+
 
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Party Starter!");
 
 	while (!WindowShouldClose())
 	{
-		BeginDrawing();
+		delta = GetFrameTime();
+		Update(delta);
 
-		ClearBackground(WHITE); // system("cls");
+		Draw();
 
-		EndDrawing();
+	
 	}
 
 	CloseWindow();
-
 }

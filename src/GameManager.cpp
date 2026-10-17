@@ -8,6 +8,7 @@ Screen currentScreen = Screen::Menu;
 
 void Update(float delta)
 {
+
 	// UPDATE:
 	switch (currentScreen)
 	{
@@ -38,15 +39,17 @@ void Update(float delta)
 
 void Draw()
 {
-	Vector2 MousePosition = GetMousePosition();
+	Vector2 mousePosition = GetMousePosition();
 
 	//DIBUJADO:
 	BeginDrawing();
+	ClearBackground(WHITE);
+
 	switch (currentScreen)
 	{
 	case Screen::Menu:
-		ButtonDrawing(MousePosition);
-		ButtonText(MousePosition);
+		ButtonDraw(mousePosition);
+		ButtonTextDraw(mousePosition);
 		break;
 	case Screen::Play:
 
@@ -66,4 +69,6 @@ void Draw()
 	default:
 		break;
 	}
+
+	EndDrawing();
 }
