@@ -1,14 +1,14 @@
 #include "GameManager.h"
 #include "ScreenMenu.h"
+#include "ScreenExit.h"
 #include "Player.h"
 #include "Button.h"
 #include "raylib.h"
 
 Screen currentScreen = Screen::Menu;
 
-void Update(float delta)
+void Update(float delta, bool& gameIsRunning)
 {
-
 	// UPDATE:
 	switch (currentScreen)
 	{
@@ -31,6 +31,7 @@ void Update(float delta)
 		IsMousePressingBackButton();
 		break;
 	case Screen::Exit:
+		ExitUpdate(gameIsRunning);
 		break;
 	default:
 		break;

@@ -12,4 +12,4 @@ enum class Screen
 extern Screen currentScreen;
 
 void Draw();
-void Update(float delta);
+void Update(float delta, bool& gameIsRunning);
