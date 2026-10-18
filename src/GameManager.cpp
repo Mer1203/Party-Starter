@@ -15,6 +15,7 @@ void Update(float delta, bool& gameIsRunning)
 	case Screen::Menu:
 		//Inicio los valores de todos los botones:
 		ButtonInit();
+		PlayerInit();
 
 		GetMousePosition();
 		IsMousePressed();
