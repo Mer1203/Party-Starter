@@ -29,13 +29,10 @@ void PlayerUpdate(float delta)
 	Vector2 mousePosition = GetMousePosition();
 	double angle = 0.0f;
 
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
 		//Vector direccion:
 		player.direction = Vector2Subtract(GetMousePosition(), player.position);
-
-		//player.direction.x = GetMouseX() - player.position.x;
-		//player.direction.y = GetMouseY() - player.position.y;
 
 		Vector2 dirNormalizado = Vector2Normalize(player.direction);
 	
