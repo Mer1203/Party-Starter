@@ -3,15 +3,15 @@
 #include "raymath.h"
 #include "Player.h"
 
-bool CollisionCircleCircle(Vector2 circleOne, float circleOneRadious,
-	                       Vector2 circleTwo, float circleTwoRadious)
+bool CollisionCircleCircle(float circleOneX, float circleOneY, float circleOneRadious,
+	                       float circleTwoX, float circleTwoY, float circleTwoRadious)
 {
 	float distanceX = 0.0f;
 	float distanceY = 0.0f;
 	float distance = 0.0f;
 
-	distanceX = circleOne.x - circleTwo.x;
-	distanceY = circleOne.y - circleTwo.y;
+	distanceX = circleOneX - circleTwoX;
+	distanceY = circleOneY - circleTwoY;
 
 	distance = static_cast<float>(sqrt( (distanceX * distanceX) +(distanceY * distanceY) ));
 
