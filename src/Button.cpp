@@ -4,7 +4,7 @@
 Button play;
 Button rules;
 Button credits;
-Button exit;
+Button exitGame;
 Button back;
 
 void ButtonInit()
@@ -36,14 +36,14 @@ void ButtonInit()
 	credits.height = 60;
 	credits.width = 200;
 
-	exit.isPressed = false;
-	exit.x = 300;
-	exit.y = 480;
-	exit.textX = 345;
-	exit.textY = 500;
-	exit.textSize = 40;
-	exit.height = 60;
-	exit.width = 200;
+	exitGame.isPressed = false;
+	exitGame.x = 300;
+	exitGame.y = 480;
+	exitGame.textX = 345;
+	exitGame.textY = 500;
+	exitGame.textSize = 40;
+	exitGame.height = 60;
+	exitGame.width = 200;
 
 	back.x = 0;
 	back.y = 0;
@@ -78,7 +78,7 @@ void IsMousePressed()
 		{
 			currentScreen = Screen::Credits;
 		}
-		else if (CheckCollisionMouseButton(mousePosition, exit.x, exit.y, exit.height, exit.width))
+		else if (CheckCollisionMouseButton(mousePosition, exitGame.x, exitGame.y, exitGame.height, exitGame.width))
 		{
 			currentScreen = Screen::Exit;
 		}
@@ -104,7 +104,7 @@ void ButtonDraw(Vector2 mousePosition)
 	DrawRectangle(play.x, play.y, play.width, play.height, VIOLET);
 	DrawRectangle(rules.x, rules.y, rules.width, rules.height, VIOLET);
 	DrawRectangle(credits.x, credits.y, credits.width, credits.height, VIOLET);
-	DrawRectangle(exit.x, exit.y, exit.width, exit.height, VIOLET);
+	DrawRectangle(exitGame.x, exitGame.y, exitGame.width, exitGame.height, VIOLET);
 
 	if (CheckCollisionMouseButton(mousePosition, play.x, play.y, play.height, play.width))
 	{
@@ -118,9 +118,9 @@ void ButtonDraw(Vector2 mousePosition)
 	{
 		DrawRectangle(credits.x, credits.y, credits.width, credits.height, BLUE);
 	}
-	else if (CheckCollisionMouseButton(mousePosition, exit.x, exit.y, exit.height, exit.width))
+	else if (CheckCollisionMouseButton(mousePosition, exitGame.x, exitGame.y, exitGame.height, exitGame.width))
 	{
-		DrawRectangle(exit.x, exit.y, exit.width, exit.height, BLUE);
+		DrawRectangle(exitGame.x, exitGame.y, exitGame.width, exitGame.height, BLUE);
 	}
 }
 
@@ -129,7 +129,7 @@ void ButtonTextDraw(Vector2 mousePosition)
 	DrawText(TextFormat("JUGAR"), play.textX, play.textY, play.textSize, BLUE);
 	DrawText(TextFormat("REGLAS"), rules.textX, rules.textY, rules.textSize, BLUE);
 	DrawText(TextFormat("CREDITOS"), credits.textX, credits.textY, credits.textSize, BLUE);
-	DrawText(TextFormat("SALIR"), exit.textX, exit.textY, exit.textSize, BLUE);
+	DrawText(TextFormat("SALIR"), exitGame.textX, exitGame.textY, exitGame.textSize, BLUE);
 
 	if (CheckCollisionMouseButton(mousePosition, play.x, play.y, play.height, play.width))
 	{
@@ -143,9 +143,9 @@ void ButtonTextDraw(Vector2 mousePosition)
 	{
 		DrawText(TextFormat("CREDITOS"), credits.textX, credits.textY, credits.textSize, VIOLET);
 	}
-	else if (CheckCollisionMouseButton(mousePosition, exit.x, exit.y, exit.height, exit.width))
+	else if (CheckCollisionMouseButton(mousePosition, exitGame.x, exitGame.y, exitGame.height, exitGame.width))
 	{
-		DrawText(TextFormat("SALIR"), exit.textX, exit.textY, exit.textSize, VIOLET);
+		DrawText(TextFormat("SALIR"), exitGame.textX, exitGame.textY, exitGame.textSize, VIOLET);
 	}
 }
 

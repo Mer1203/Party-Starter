@@ -17,7 +17,7 @@ struct Button
 extern Button play;
 extern Button rules;
 extern Button credits;
-extern Button exit;
+extern Button exitGame;
 extern Button back;
 
 void ButtonInit();
