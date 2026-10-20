@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Asteroids.cpp" />
+    <ClCompile Include="src\Bullets.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Asteroids.h" />
+    <ClInclude Include="src\Bullets.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\Game.h" />
