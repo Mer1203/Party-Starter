@@ -12,5 +12,5 @@ enum class Screen
 
 extern Screen currentScreen;
 
-void Draw(Texture2D backgroundMenu);
+void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay);
 void Update(float delta, bool& gameIsRunning);

@@ -9,19 +9,20 @@ void Game()
 {
 	float delta = 0.0f;
 	bool gameIsRunning = true;
-	srand(time(NULL));
 
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Party Starter!");
 	
 	Font font = LoadFont("res/Font/Super Wonder.ttf");
 	Texture2D backgroundMenu = LoadTexture("res/Backgrounds/BackgroundMenu.png");
+	Texture2D backgroundGameplay = LoadTexture("res/Backgrounds/BackgroundTwo_Gameplay.png");
+
 
 	while (!WindowShouldClose() && gameIsRunning)
 	{
 		delta = GetFrameTime();
 		Update(delta, gameIsRunning);
 
-		Draw(backgroundMenu);
+		Draw(backgroundMenu, backgroundGameplay);
 	}
 
 	UnloadTexture(backgroundMenu);

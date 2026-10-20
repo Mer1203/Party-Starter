@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "ScreenMenu.h"
 #include "ScreenExit.h"
+#include "ScreenPlay.h"
 #include "Asteroids.h"
 #include "Bullets.h"
 #include "Player.h"
@@ -46,7 +47,7 @@ void Update(float delta, bool& gameIsRunning)
 	}
 }
 
-void Draw(Texture2D backgroundMenu)
+void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay)
 {
 	Vector2 mousePosition = GetMousePosition();
 
@@ -57,15 +58,15 @@ void Draw(Texture2D backgroundMenu)
 	switch (currentScreen)
 	{
 	case Screen::Menu:
-		DrawTexture(backgroundMenu, 0, 0, WHITE);
+		MenuDraw(backgroundMenu);
 		ButtonDraw(mousePosition);
 		ButtonTextDraw(mousePosition);
 		break;
 	case Screen::Play:
+		GameplayDraw(backgroundGameplay);
 		//Provisorio, despues cambiar a boton de pausa!
 		BackMenuButton();
 		BulletsDraw();
-		PlayerDraw();
 		break;
 	case Screen::Rules:
 		BackMenuButton();

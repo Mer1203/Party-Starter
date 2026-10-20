@@ -1,5 +1,5 @@
 #pragma once
+#include "raylib.h"
 
-void GameplayInit();
 void GameplayUpdate();
-void GameplayDraw();
+void GameplayDraw(Texture2D backgroundGameplay);
