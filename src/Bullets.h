@@ -15,7 +15,7 @@ struct Bullets
 const int MAX_BULLETS = 30;
 const int MAX_BULLET_RADIUS = 10;
 
-const float MAX_SPEED = 300;
+const float MAX_BULLET_SPEED = 300;
 const float MAX_TIME = 3;
 
 extern Bullets bullets[MAX_BULLETS];
@@ -23,6 +23,8 @@ extern Bullets bullets[MAX_BULLETS];
 void SetDirection(Bullets& bullet, Vector2 position);
 void SetPosition(Bullets& bullet, Vector2 position);
 
-void BulletsInit();
-void BulletsUpdate();
+void BulletsInit(Bullets& currentBullet);
+void BulletsUpdate(Bullets& currentBullet, float delta);
 void BulletsDraw();
+
+void ShotBullet(float delta);

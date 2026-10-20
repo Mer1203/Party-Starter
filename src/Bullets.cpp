@@ -1,26 +1,25 @@
 #include "Bullets.h"
 #include "raylib.h"
 #include "raymath.h"
+#include "Player.h"
 
 Bullets bullets[MAX_BULLETS];
 
-void BulletsInit()
+void BulletsInit(Bullets& currentBullet)
 {
-	for (int i = 0; i < MAX_BULLETS; i++)
-	{
-		bullets[i].position.x = 0.0f;
-		bullets[i].position.y = 0.0f;
+	currentBullet.position.x = 0.0f;
+	currentBullet.position.y = 0.0f;
 
-		bullets[i].direction.x = 0.0f;
-		bullets[i].direction.y = 0.0f;
-	
-		bullets[i].radius = MAX_BULLET_RADIUS;
-		bullets[i].isActive = false;
+	currentBullet.direction.x = 0.0f;
+	currentBullet.direction.y = 0.0f;
 
-		bullets[i].speed = MAX_SPEED;
-		bullets[i].countTime = 0.0f;
-		bullets[i].maxTime = MAX_TIME;
-	}
+	currentBullet.radius = MAX_BULLET_RADIUS;
+	currentBullet.isActive = false;
+
+	currentBullet.speed = MAX_BULLET_SPEED;
+	currentBullet.countTime = 0.0f;
+	currentBullet.maxTime = MAX_TIME;
+
 }
 
 void SetDirection(Bullets& bullet, Vector2 direction)
@@ -33,9 +32,43 @@ void SetPosition(Bullets& bullet, Vector2 position)
 	bullet.position = position;
 }
 
-void BulletsUpdate()
+void BulletsUpdate(Bullets& currentBullet, float delta)
 {
+	if (currentBullet.isActive == true)
+	{
+		currentBullet.position.x += currentBullet.direction.x * currentBullet.speed * delta;
+		currentBullet.position.y += currentBullet.direction.y * currentBullet.speed * delta;
 
+		//Esto va actualizando el contador cuando llegue al tiempo maximo, y reinicia los valores de la bala actual:
+		currentBullet.countTime += delta;
+
+		if (currentBullet.countTime >= currentBullet.maxTime)
+		{
+			BulletsInit(currentBullet);
+		}
+	}
+}
+
+void ShotBullet(float delta)
+{
+	if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+	{
+		for (int i = 0; i < MAX_BULLETS; i++)
+		{
+			if (bullets[i].isActive == false)
+			{
+				bullets[i].isActive = true;
+
+				SetDirection(bullets[i], player.direction);
+				SetPosition(bullets[i], player.position);
+				break;
+			}
+		}
+	}
+	for (int i = 0; i < MAX_BULLETS; i++)
+	{
+		BulletsUpdate(bullets[i], delta);
+	}
 }
 
 void BulletsDraw()
