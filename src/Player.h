@@ -16,7 +16,7 @@ struct Player
 extern Player player;
 extern Rectangle rectangle;
 
-const int MAX_SPEED = 400;
+const int MAX_PLAYER_SPEED = 400;
 
 void PlayerInit();
 void PlayerUpdate(float delta);

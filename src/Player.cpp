@@ -36,13 +36,13 @@ void PlayerUpdate(float delta)
 
 		Vector2 dirNormalizado = Vector2Normalize(player.direction);
 	
-		player.speed.x += dirNormalizado.x * delta * MAX_SPEED;
-		player.speed.y += dirNormalizado.y * delta * MAX_SPEED;
+		player.speed.x += dirNormalizado.x * delta * MAX_PLAYER_SPEED;
+		player.speed.y += dirNormalizado.y * delta * MAX_PLAYER_SPEED;
 
-		if (Vector2Length(player.speed) > MAX_SPEED)
+		if (Vector2Length(player.speed) > MAX_PLAYER_SPEED)
 		{
-			player.speed.x = (player.speed.x / Vector2Length(player.speed)) * MAX_SPEED;
-			player.speed.y = (player.speed.y / Vector2Length(player.speed)) * MAX_SPEED;
+			player.speed.x = (player.speed.x / Vector2Length(player.speed)) * MAX_PLAYER_SPEED;
+			player.speed.y = (player.speed.y / Vector2Length(player.speed)) * MAX_PLAYER_SPEED;
 		}
 
 		angle = atan(static_cast<double>(player.direction.y / player.direction.x));
