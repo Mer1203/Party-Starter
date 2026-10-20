@@ -19,7 +19,6 @@ void BulletsInit(Bullets& currentBullet)
 	currentBullet.speed = MAX_BULLET_SPEED;
 	currentBullet.countTime = 0.0f;
 	currentBullet.maxTime = MAX_TIME;
-
 }
 
 void SetDirection(Bullets& bullet, Vector2 direction)

@@ -64,10 +64,7 @@ void Draw(Texture2D backgroundMenu)
 	case Screen::Play:
 		//Provisorio, despues cambiar a boton de pausa!
 		BackMenuButton();
-
 		BulletsDraw();
-
-
 		PlayerDraw();
 		break;
 	case Screen::Rules:
