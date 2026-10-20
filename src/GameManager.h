@@ -1,4 +1,5 @@
 #pragma once
+#include "raylib.h"
 
 enum class Screen
 {
@@ -11,5 +12,5 @@ enum class Screen
 
 extern Screen currentScreen;
 
-void Draw();
+void Draw(Texture2D backgroundMenu);
 void Update(float delta, bool& gameIsRunning);

@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "ScreenMenu.h"
 #include "ScreenExit.h"
+#include "Asteroids.h"
 #include "Player.h"
 #include "Button.h"
 #include "raylib.h"
@@ -16,13 +17,13 @@ void Update(float delta, bool& gameIsRunning)
 		//Inicio los valores de todos los botones:
 		ButtonInit();
 		PlayerInit();
+		AsteroidsInit();
 
 		GetMousePosition();
 		IsMousePressed();
 		break;
 	case Screen::Play:
 		PlayerUpdate(delta);
-
 		IsMousePressingBackButton();
 		break;
 	case Screen::Rules:
@@ -39,7 +40,7 @@ void Update(float delta, bool& gameIsRunning)
 	}
 }
 
-void Draw()
+void Draw(Texture2D backgroundMenu)
 {
 	Vector2 mousePosition = GetMousePosition();
 
@@ -50,11 +51,11 @@ void Draw()
 	switch (currentScreen)
 	{
 	case Screen::Menu:
+		DrawTexture(backgroundMenu, 0, 0, WHITE);
 		ButtonDraw(mousePosition);
 		ButtonTextDraw(mousePosition);
 		break;
 	case Screen::Play:
-
 		//Provisorio, despues cambiar a boton de pausa!
 		BackMenuButton();
 
