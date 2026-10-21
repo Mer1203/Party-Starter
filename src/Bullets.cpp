@@ -91,15 +91,23 @@ void ShotBullet(float delta)
 	}
 }
 
-void BulletsDraw()
+void BulletsDraw(Texture2D confetti)
 {
-#ifdef _DEBUG
+
 	for (int i = 0; i < MAX_BULLETS; i++)
 	{
 		if (bullets[i].isActive == true)
 		{
+#ifdef _DEBUG
 			DrawCircleV(bullets[i].position, bullets[i].radius, GREEN);
+#endif
+
+			Vector2 position = bullets[i].position;
+			position.x -= bullets[i].radius;
+			position.y -= bullets[i].radius;
+
+			DrawTextureEx(confetti, position, 0, 0.02f, WHITE);
 		}
 	}
-#endif
+
 }

@@ -13,7 +13,7 @@ struct Bullets
 };
 
 const int MAX_BULLETS = 30;
-const int MAX_BULLET_RADIUS = 10;
+const int MAX_BULLET_RADIUS = 15;
 
 const float MAX_BULLET_SPEED = 300;
 const float MAX_TIME = 3;
@@ -25,6 +25,6 @@ void SetPosition(Bullets& bullet, Vector2 position);
 
 void BulletsInit(Bullets& currentBullet);
 void BulletsUpdate(Bullets& currentBullet, float delta);
-void BulletsDraw();
+void BulletsDraw(Texture2D confetti);
 
 void ShotBullet(float delta);

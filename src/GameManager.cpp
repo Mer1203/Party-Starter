@@ -47,7 +47,7 @@ void Update(float delta, bool& gameIsRunning, Texture2D canion)
 	}
 }
 
-void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion)
+void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti)
 {
 	Vector2 mousePosition = GetMousePosition();
 
@@ -63,10 +63,9 @@ void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D cani
 		ButtonTextDraw(mousePosition);
 		break;
 	case Screen::Play:
-		GameplayDraw(backgroundGameplay, canion);
+		GameplayDraw(backgroundGameplay, canion, confetti);
 		//Provisorio, despues cambiar a boton de pausa!
 		BackMenuButton();
-		BulletsDraw();
 		break;
 	case Screen::Rules:
 		BackMenuButton();
