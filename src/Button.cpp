@@ -10,40 +10,40 @@ Button back;
 void ButtonInit()
 {
 	play.isPressed = false;
-	play.x = 300;
+	play.x = 700;
 	play.y = 180;
-	play.textX = 344;
+	play.textX = 770;
 	play.textY = 200;
 	play.textSize = 40;
-	play.height = 60;
-	play.width = 200;
+	play.height = 80;
+	play.width = 280;
 
 	rules.isPressed = false;
-	rules.x = 300;
-	rules.y = 280;
-	rules.textX = 330;
-	rules.textY = 300;
+	rules.x = 700;
+	rules.y = 310;
+	rules.textX = 760;
+	rules.textY = 330;
 	rules.textSize = 40;
-	rules.height = 60;
-	rules.width = 200;
+	rules.height = 80;
+	rules.width = 280;
 
 	credits.isPressed = false;
-	credits.x = 300;
-	credits.y = 380;
-	credits.textX = 304;
-	credits.textY = 400;
+	credits.x = 700;
+	credits.y = 440;
+	credits.textX = 730;
+	credits.textY = 460;
 	credits.textSize = 40;
-	credits.height = 60;
-	credits.width = 200;
+	credits.height = 80;
+	credits.width = 280;
 
 	exitGame.isPressed = false;
-	exitGame.x = 300;
-	exitGame.y = 480;
-	exitGame.textX = 345;
-	exitGame.textY = 500;
+	exitGame.x = 700;
+	exitGame.y = 570;
+	exitGame.textX = 780;
+	exitGame.textY = 590;
 	exitGame.textSize = 40;
-	exitGame.height = 60;
-	exitGame.width = 200;
+	exitGame.height = 80;
+	exitGame.width = 280;
 
 	back.x = 0;
 	back.y = 0;
