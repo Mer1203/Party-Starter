@@ -47,9 +47,9 @@ void CreateAsteroid(Asteroids currentAsteroid)
 	//Dandole una direccion random:
 
 	randomDirection = rand() % (1 - (-1) + 1);
-	currentAsteroid.direction.x = randomDirection;
+	currentAsteroid.direction.x = static_cast<float>(randomDirection);
 	randomDirection = rand() % (1 - (-1) + 1);
-	currentAsteroid.direction.y = randomDirection;
+	currentAsteroid.direction.y = static_cast<float>(randomDirection);
 }
 
 void AsteroidsUpdate(Asteroids currentAsteroid, float delta)
