@@ -1,28 +1,31 @@
 #pragma once
 #include "raylib.h"
 
-struct Asteroids
+namespace Asteroids
 {
-	Vector2 position;
-	Vector2 direction;
-	float speed;
-	float radius;
-	bool isDestroyed;
-};
+	struct Asteroids
+	{
+		Vector2 position;
+		Vector2 direction;
+		float speed;
+		float radius;
+		bool isDestroyed;
+	};
 
-const int MAX_ASTEROIDS = 30;
+	const int MAX_ASTEROIDS = 30;
 
-extern Asteroids bigAsteroid[MAX_ASTEROIDS];
-extern Asteroids middleAsteroid[MAX_ASTEROIDS];
-extern Asteroids smallAsteroid[MAX_ASTEROIDS];
+	extern Asteroids bigAsteroid[MAX_ASTEROIDS];
+	extern Asteroids middleAsteroid[MAX_ASTEROIDS];
+	extern Asteroids smallAsteroid[MAX_ASTEROIDS];
 
-const int MAX_SPEED = 400;
+	const int MAX_SPEED = 400;
 
-void AsteroidsInit();
-void AsteroidsUpdate(Asteroids currentAsteroid, float delta);
+	void AsteroidsInit();
+	void AsteroidsUpdate(Asteroids currentAsteroid, float delta);
 
-void CreateAsteroid(Asteroids currentAsteroid);
+	void CreateAsteroid(Asteroids currentAsteroid);
 
-void AsteroidOneDraw(Asteroids currentAsteroid);
-void AsteroidTwoDraw(Asteroids currentAsteroid);
-void AsteroidThreeDraw(Asteroids currentAsteroid);
+	void AsteroidOneDraw(Asteroids currentAsteroid);
+	void AsteroidTwoDraw(Asteroids currentAsteroid);
+	void AsteroidThreeDraw(Asteroids currentAsteroid);
+}

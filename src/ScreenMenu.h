@@ -1,4 +1,7 @@
 #pragma once
 #include "raylib.h"
 
-void MenuDraw(Texture2D backgroundMenu);
+namespace Asteroids
+{
+	void MenuDraw(Texture2D backgroundMenu);
+}

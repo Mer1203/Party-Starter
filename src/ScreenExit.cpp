@@ -1,10 +1,13 @@
 #include "ScreenExit.h"
 #include "GameManager.h"
 
-void ExitUpdate(bool& gameIsRunning)
+namespace Asteroids
 {
-	if (currentScreen == Screen::Exit)
+	void ExitUpdate(bool& gameIsRunning)
 	{
-		gameIsRunning = false;
+		if (currentScreen == Screen::Exit)
+		{
+			gameIsRunning = false;
+		}
 	}
 }

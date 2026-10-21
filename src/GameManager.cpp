@@ -8,76 +8,79 @@
 #include "Button.h"
 #include "raylib.h"
 
-Screen currentScreen = Screen::Menu;
-
-void Update(float delta, bool& gameIsRunning, Texture2D canion)
+namespace Asteroids
 {
-	// UPDATE:
-	switch (currentScreen)
+	Screen currentScreen = Screen::Menu;
+
+	void Update(float delta, bool& gameIsRunning, Texture2D canion)
 	{
-	case Screen::Menu:
-		//Inicio los valores de todos los botones:
-		ButtonInit();
-		PlayerInit(canion);
-		//AsteroidsInit();
-		for (int i = 0; i < MAX_BULLETS; i++)
+		// UPDATE:
+		switch (currentScreen)
 		{
-			BulletsInit(bullets[i]);
+		case Screen::Menu:
+			//Inicio los valores de todos los botones:
+			ButtonInit();
+			PlayerInit(canion);
+			//AsteroidsInit();
+			for (int i = 0; i < MAX_BULLETS; i++)
+			{
+				BulletsInit(bullets[i]);
+			}
+
+			GetMousePosition();
+			IsMousePressed();
+			break;
+		case Screen::Play:
+			PlayerUpdate(delta);
+			ShotBullet(delta);
+			IsMousePressingBackButton();
+			break;
+		case Screen::Rules:
+			IsMousePressingBackButton();
+			break;
+		case Screen::Credits:
+			IsMousePressingBackButton();
+			break;
+		case Screen::Exit:
+			ExitUpdate(gameIsRunning);
+			break;
+		default:
+			break;
+		}
+	}
+
+	void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti)
+	{
+		Vector2 mousePosition = GetMousePosition();
+
+		//DIBUJADO:
+		BeginDrawing();
+		ClearBackground(WHITE);
+
+		switch (currentScreen)
+		{
+		case Screen::Menu:
+			MenuDraw(backgroundMenu);
+			ButtonDraw(mousePosition);
+			ButtonTextDraw(mousePosition);
+			break;
+		case Screen::Play:
+			GameplayDraw(backgroundGameplay, canion, confetti);
+			//Provisorio, despues cambiar a boton de pausa!
+			BackMenuButton();
+			break;
+		case Screen::Rules:
+			BackMenuButton();
+			break;
+		case Screen::Credits:
+			BackMenuButton();
+			break;
+		case Screen::Exit:
+			break;
+		default:
+			break;
 		}
 
-		GetMousePosition();
-		IsMousePressed();
-		break;
-	case Screen::Play:
-		PlayerUpdate(delta);
-		ShotBullet(delta);
-		IsMousePressingBackButton();
-		break;
-	case Screen::Rules:
-		IsMousePressingBackButton();
-		break;
-	case Screen::Credits:
-		IsMousePressingBackButton();
-		break;
-	case Screen::Exit:
-		ExitUpdate(gameIsRunning);
-		break;
-	default:
-		break;
+		EndDrawing();
 	}
-}
-
-void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti)
-{
-	Vector2 mousePosition = GetMousePosition();
-
-	//DIBUJADO:
-	BeginDrawing();
-	ClearBackground(WHITE);
-
-	switch (currentScreen)
-	{
-	case Screen::Menu:
-		MenuDraw(backgroundMenu);
-		ButtonDraw(mousePosition);
-		ButtonTextDraw(mousePosition);
-		break;
-	case Screen::Play:
-		GameplayDraw(backgroundGameplay, canion, confetti);
-		//Provisorio, despues cambiar a boton de pausa!
-		BackMenuButton();
-		break;
-	case Screen::Rules:
-		BackMenuButton();
-		break;
-	case Screen::Credits:
-		BackMenuButton();
-		break;
-	case Screen::Exit:
-		break;
-	default:
-		break;
-	}
-
-	EndDrawing();
 }

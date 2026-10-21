@@ -1,3 +1,6 @@
 #pragma once
 
-void ExitUpdate(bool& gameIsRunning);
+namespace Asteroids
+{
+	void ExitUpdate(bool& gameIsRunning);
+}
