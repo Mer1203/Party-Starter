@@ -12,9 +12,9 @@ struct Asteroids
 
 const int MAX_ASTEROIDS = 30;
 
-extern Asteroids asteroidOne[MAX_ASTEROIDS];
-extern Asteroids asteroidTwo[MAX_ASTEROIDS];
-extern Asteroids asteroidThree[MAX_ASTEROIDS];
+extern Asteroids bigAsteroid[MAX_ASTEROIDS];
+extern Asteroids middleAsteroid[MAX_ASTEROIDS];
+extern Asteroids smallAsteroid[MAX_ASTEROIDS];
 
 const int MAX_SPEED = 400;
 

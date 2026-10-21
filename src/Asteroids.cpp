@@ -4,40 +4,40 @@
 #include <ctime>
 #include <cstdlib>
 
-Asteroids asteroidOne[MAX_ASTEROIDS];
-Asteroids asteroidTwo[MAX_ASTEROIDS];
-Asteroids asteroidThree[MAX_ASTEROIDS];
+Asteroids bigAsteroid[MAX_ASTEROIDS];
+Asteroids middleAsteroid[MAX_ASTEROIDS];
+Asteroids smallAsteroid[MAX_ASTEROIDS];
 
 void AsteroidsInit()
 {
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		asteroidOne[i].position.x = 0;
-		asteroidOne[i].position.y = 0;
-		asteroidOne[i].direction.x = 0;
-		asteroidOne[i].direction.y = 0;
-		asteroidOne[i].radius = 40;
-		asteroidOne[i].isDestroyed = false;
+		bigAsteroid[i].position.x = 0;
+		bigAsteroid[i].position.y = 0;
+		bigAsteroid[i].direction.x = 0;
+		bigAsteroid[i].direction.y = 0;
+		bigAsteroid[i].radius = 40;
+		bigAsteroid[i].isDestroyed = false;
 	}
 
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		asteroidTwo[i].position.x = 0;
-		asteroidTwo[i].position.y = 0;
-		asteroidTwo[i].direction.x = 0;
-		asteroidTwo[i].direction.y = 0;
-		asteroidTwo[i].radius = 25;
-		asteroidTwo[i].isDestroyed = false;
+		middleAsteroid[i].position.x = 0;
+		middleAsteroid[i].position.y = 0;
+		middleAsteroid[i].direction.x = 0;
+		middleAsteroid[i].direction.y = 0;
+		middleAsteroid[i].radius = 25;
+		middleAsteroid[i].isDestroyed = false;
 	}
 
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		asteroidThree[i].position.x = 0;
-		asteroidThree[i].position.y = 0;
-		asteroidThree[i].direction.x = 0;
-		asteroidThree[i].direction.y = 0;
-		asteroidThree[i].radius = 10;
-		asteroidThree[i].isDestroyed = false;
+		smallAsteroid[i].position.x = 0;
+		smallAsteroid[i].position.y = 0;
+		smallAsteroid[i].direction.x = 0;
+		smallAsteroid[i].direction.y = 0;
+		smallAsteroid[i].radius = 10;
+		smallAsteroid[i].isDestroyed = false;
 	}
 }
 
@@ -59,7 +59,7 @@ void AsteroidsUpdate(Asteroids currentAsteroid, float delta)
 	currentAsteroid.position.y += currentAsteroid.direction.y * currentAsteroid.speed * delta;
 
 	/*
-		if (bool CollisionCircleCircle(currentAsteroid.position.x, currentAsteroid.position.y, currentAsteroid.radious,
+		if (CollisionCircleCircle(currentAsteroid.position.x, currentAsteroid.position.y, currentAsteroid.radious,
 	                       float circleTwoX, float circleTwoY, float circleTwoRadious))
 		{
 			isDestroyed = true;
@@ -90,7 +90,7 @@ void AsteroidTwoDraw(Asteroids currentAsteroid)
 #endif 
 }
 
-void AsteroidThreeDraw(Asteroids currentAsteroid)
+void AsteroidThreeDraw(Asteroids currentAsteroid)  
 {
 #ifdef _DEBUG
 	DrawCircleV(currentAsteroid.position, currentAsteroid.radius, GREEN);
