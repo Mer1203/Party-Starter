@@ -5,7 +5,7 @@
 #include <ctime>
 #include <cstdlib>
 
-void Game()
+void RunGame()
 {
 	float delta = 0.0f;
 	bool gameIsRunning = true;
