@@ -7,11 +7,8 @@ void GameplayUpdate()
 
 }
 
-void GameplayDraw(Texture2D backgroundGameplay)
+void GameplayDraw(Texture2D backgroundGameplay, Texture2D canion)
 {
 	DrawTexture(backgroundGameplay, 0, 0, WHITE);
-
-#ifdef _DEBUG
-	PlayerDraw();
-#endif
+	PlayerDraw(canion);
 }

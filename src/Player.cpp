@@ -5,8 +5,10 @@
 
 Player player;
 Rectangle rectangle;
+Rectangle canionSource;
+Rectangle canionDestination;
 
-void PlayerInit()
+void PlayerInit(Texture2D canion)
 {
 	player.position.x = WINDOW_WIDTH / 2;
 	player.position.y = WINDOW_HEIGHT / 2;
@@ -22,6 +24,16 @@ void PlayerInit()
 	rectangle.y = player.position.y;
 	rectangle.width = 100;
 	rectangle.height = 100;
+
+	canionSource.x = 0.0f;
+	canionSource.y = 0.0f;
+	canionSource.width = static_cast<float>(canion.width);
+	canionSource.height = static_cast<float>(canion.height);
+
+	canionDestination.x = player.position.x;
+	canionDestination.y = player.position.y;
+	canionDestination.width = 110;
+	canionDestination.height = 100;
 }
 
 void PlayerUpdate(float delta)
@@ -95,8 +107,14 @@ void PlayerUpdate(float delta)
 
 }
 
-void PlayerDraw()
+void PlayerDraw(Texture2D canion)
 {
+#ifdef _DEBUG
 	DrawRectanglePro(rectangle, {rectangle.width / 2, rectangle.height / 2}, player.rotation, BLUE);
 	DrawCircleV(player.position, player.radius, GREEN);
+#endif
+	canionDestination.x = player.position.x;
+	canionDestination.y = player.position.y;
+
+	DrawTexturePro(canion, canionSource, canionDestination, { rectangle.width / 2, rectangle.height / 2 }, player.rotation, WHITE);
 }

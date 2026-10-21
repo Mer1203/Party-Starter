@@ -16,8 +16,11 @@ struct Player
 extern Player player;
 extern Rectangle rectangle;
 
+extern Rectangle canionSource;
+extern Rectangle canionDestination;
+
 const int MAX_PLAYER_SPEED = 400;
 
-void PlayerInit();
+void PlayerInit(Texture2D canion);
 void PlayerUpdate(float delta);
-void PlayerDraw();
+void PlayerDraw(Texture2D canion);

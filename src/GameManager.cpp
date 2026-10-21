@@ -10,7 +10,7 @@
 
 Screen currentScreen = Screen::Menu;
 
-void Update(float delta, bool& gameIsRunning)
+void Update(float delta, bool& gameIsRunning, Texture2D canion)
 {
 	// UPDATE:
 	switch (currentScreen)
@@ -18,7 +18,7 @@ void Update(float delta, bool& gameIsRunning)
 	case Screen::Menu:
 		//Inicio los valores de todos los botones:
 		ButtonInit();
-		PlayerInit();
+		PlayerInit(canion);
 		//AsteroidsInit();
 		for (int i = 0; i < MAX_BULLETS; i++)
 		{
@@ -47,7 +47,7 @@ void Update(float delta, bool& gameIsRunning)
 	}
 }
 
-void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay)
+void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion)
 {
 	Vector2 mousePosition = GetMousePosition();
 
@@ -63,7 +63,7 @@ void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay)
 		ButtonTextDraw(mousePosition);
 		break;
 	case Screen::Play:
-		GameplayDraw(backgroundGameplay);
+		GameplayDraw(backgroundGameplay, canion);
 		//Provisorio, despues cambiar a boton de pausa!
 		BackMenuButton();
 		BulletsDraw();
