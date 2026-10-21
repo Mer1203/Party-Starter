@@ -70,7 +70,7 @@ void BulletsUpdate(Bullets& currentBullet, float delta)
 
 void ShotBullet(float delta)
 {
-	if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
 		for (int i = 0; i < MAX_BULLETS; i++)
 		{
