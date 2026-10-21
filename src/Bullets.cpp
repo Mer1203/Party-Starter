@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "Player.h"
+#include "Game.h"
 
 Bullets bullets[MAX_BULLETS];
 
@@ -45,6 +46,25 @@ void BulletsUpdate(Bullets& currentBullet, float delta)
 		{
 			BulletsInit(currentBullet);
 		}
+
+		if (currentBullet.position.x > WINDOW_WIDTH)
+		{
+			currentBullet.position.x = 0;
+		}
+		else if (currentBullet.position.x < 0)
+		{
+			currentBullet.position.x = WINDOW_WIDTH;
+		}
+
+		if (currentBullet.position.y > WINDOW_HEIGHT)
+		{
+			currentBullet.position.y = 0;
+		}
+		else if (currentBullet.position.y < 0)
+		{
+			currentBullet.position.y = WINDOW_HEIGHT;
+		}
+
 	}
 }
 
@@ -60,6 +80,7 @@ void ShotBullet(float delta)
 
 				SetDirection(bullets[i], player.direction);
 				SetPosition(bullets[i], player.position);
+
 				break;
 			}
 		}
