@@ -1,6 +1,7 @@
 #include "Asteroids.h"
-#include "raylib.h"
 #include "raymath.h"
+#include "raylib.h"
+#include "Game.h"
 #include <ctime>
 #include <cstdlib>
 
@@ -10,37 +11,31 @@ namespace Asteroids
 	Asteroids middleAsteroid[MAX_ASTEROIDS];
 	Asteroids smallAsteroid[MAX_ASTEROIDS];
 
-	void AsteroidsInit()
+	void AsteroidsInit(Asteroids currentBigAsteroid, Asteroids currentMiddleAsteroid, Asteroids currentSmallAsteroid)
 	{
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
-		{
-			bigAsteroid[i].position.x = 0;
-			bigAsteroid[i].position.y = 0;
-			bigAsteroid[i].direction.x = 0;
-			bigAsteroid[i].direction.y = 0;
-			bigAsteroid[i].radius = 40;
-			bigAsteroid[i].isDestroyed = false;
-		}
+		currentBigAsteroid.position.x = 0;
+		currentBigAsteroid.position.y = 0;
+		currentBigAsteroid.direction.x = 0;
+		currentBigAsteroid.direction.y = 0;
+		currentBigAsteroid.speed = MAX_BIG_ASTEROID_SPEED;
+		currentBigAsteroid.radius = 40;
+		currentBigAsteroid.isDestroyed = false;
 
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
-		{
-			middleAsteroid[i].position.x = 0;
-			middleAsteroid[i].position.y = 0;
-			middleAsteroid[i].direction.x = 0;
-			middleAsteroid[i].direction.y = 0;
-			middleAsteroid[i].radius = 25;
-			middleAsteroid[i].isDestroyed = false;
-		}
+		currentMiddleAsteroid.position.x = 0;
+		currentMiddleAsteroid.position.y = 0;
+		currentMiddleAsteroid.direction.x = 0;
+		currentMiddleAsteroid.direction.y = 0;
+		currentMiddleAsteroid.speed = MAX_MIDDLE_ASTEROID_SPEED;
+		currentMiddleAsteroid.radius = 25;
+		currentMiddleAsteroid.isDestroyed = false;
 
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
-		{
-			smallAsteroid[i].position.x = 0;
-			smallAsteroid[i].position.y = 0;
-			smallAsteroid[i].direction.x = 0;
-			smallAsteroid[i].direction.y = 0;
-			smallAsteroid[i].radius = 10;
-			smallAsteroid[i].isDestroyed = false;
-		}
+		currentSmallAsteroid.position.x = 0;
+		currentSmallAsteroid.position.y = 0;
+		currentSmallAsteroid.direction.x = 0;
+		currentSmallAsteroid.direction.y = 0;
+		currentSmallAsteroid.speed = MAX_SMALL_ASTEROID_SPEED;
+		currentSmallAsteroid.radius = 10;
+		currentSmallAsteroid.isDestroyed = false;
 	}
 
 	void CreateAsteroid(Asteroids currentAsteroid)
@@ -76,6 +71,24 @@ namespace Asteroids
 				que se arranquen a dibujar dos mas chicos;
 			}
 		*/
+
+		if (currentAsteroid.position.x > WINDOW_WIDTH)
+		{
+			currentAsteroid.position.x = 0;
+		}
+		else if (currentAsteroid.position.x < 0)
+		{
+			currentAsteroid.position.x = WINDOW_WIDTH;
+		}
+
+		if (currentAsteroid.position.y > WINDOW_HEIGHT)
+		{
+			currentAsteroid.position.y = 0;
+		}
+		else if (currentAsteroid.position.y < 0)
+		{
+			currentAsteroid.position.y = WINDOW_HEIGHT;
+		}
 	}
 
 	void AsteroidOneDraw(Asteroids currentAsteroid)

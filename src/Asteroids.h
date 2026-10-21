@@ -18,9 +18,11 @@ namespace Asteroids
 	extern Asteroids middleAsteroid[MAX_ASTEROIDS];
 	extern Asteroids smallAsteroid[MAX_ASTEROIDS];
 
-	const int MAX_SPEED = 400;
+	const int MAX_BIG_ASTEROID_SPEED = 300;
+	const int MAX_MIDDLE_ASTEROID_SPEED = 200;
+	const int MAX_SMALL_ASTEROID_SPEED = 100;
 
-	void AsteroidsInit();
+	void AsteroidsInit(Asteroids currentBigAsteroid, Asteroids currentMiddleAsteroid, Asteroids currentSmallAsteroid);
 	void AsteroidsUpdate(Asteroids currentAsteroid, float delta);
 
 	void CreateAsteroid(Asteroids currentAsteroid);
