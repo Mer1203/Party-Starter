@@ -79,6 +79,7 @@ namespace Asteroids
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Credits:
+			CreditsDraw(backgroundGameplay);
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Exit:

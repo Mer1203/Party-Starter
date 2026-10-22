@@ -3,5 +3,8 @@
 
 namespace Asteroids
 {
-
+	void CreditsDraw(Texture2D backgroundGameplay)
+	{
+		DrawTexture(backgroundGameplay, 0, 0, WHITE);
+	}
 }
