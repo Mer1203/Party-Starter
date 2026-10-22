@@ -33,6 +33,7 @@ namespace Asteroids
 
 		ButtonDraw(mousePosition, playButton, rulesButton, creditsButton, exitButton, playPressedButton, 
 			       rulesPressedButton, creditsPressedButton, exitPressedButton);
-		//ButtonTextDraw(mousePosition);
+		ButtonTextDraw(font);
+		
 	}
 }

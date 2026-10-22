@@ -350,6 +350,7 @@ void SmallAsteroidDraw(Texture2D piñataThree)
 #ifdef _DEBUG
 			DrawCircleV(smallAsteroid[i].position, smallAsteroid[i].radius, RED);
 #endif
+
 			Vector2 position = smallAsteroid[i].position;
 			position.x -= 52;
 			position.y -= 40;

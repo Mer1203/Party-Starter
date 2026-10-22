@@ -14,46 +14,56 @@ namespace Asteroids
 		play.isPressed = false;
 		play.position.x = 700;
 		play.position.y = 180;
-		play.textX = 770;
-		play.textY = 200;
+		play.textPosition.x = 780;
+		play.textPosition.y = 197;
 		play.textSize = 40;
 		play.size.y = 80; //height
 		play.size.x = 280; //width
+		play.fontSize = 60;
+		play.spacing = 2;
 
 		rules.isPressed = false;
 		rules.position.x = 700;
 		rules.position.y = 310;
-		rules.textX = 760;
-		rules.textY = 330;
+		rules.textPosition.x = 775;
+		rules.textPosition.y = 327;
 		rules.textSize = 40;
 		rules.size.y = 80;
 		rules.size.x = 280;
+		rules.fontSize = 60;
+		rules.spacing = 2;
 
 		credits.isPressed = false;
 		credits.position.x = 700;
 		credits.position.y = 440;
-		credits.textX = 730;
-		credits.textY = 460;
+		credits.textPosition.x = 755;
+		credits.textPosition.y = 456;
 		credits.textSize = 40;
 		credits.size.y = 80;
 		credits.size.x = 280;
+		credits.fontSize = 60;
+		credits.spacing = 2;
 
 		exitGame.isPressed = false;
 		exitGame.position.x = 700;
 		exitGame.position.y = 570;
-		exitGame.textX = 780;
-		exitGame.textY = 590;
+		exitGame.textPosition.x = 800;
+		exitGame.textPosition.y = 587;
 		exitGame.textSize = 40;
 		exitGame.size.y = 80;
 		exitGame.size.x = 280;
+		exitGame.fontSize = 60;
+		exitGame.spacing = 2;
 
 		back.position.x = 0;
 		back.position.y = 0;
 		back.size.y = 70;
 		back.size.x = 70;
-		back.textX = 10;
-		back.textY = 6;
+		back.textPosition.x = 10;
+		back.textPosition.y = 6;
 		back.textSize = 20;
+		back.fontSize = 30;
+		back.spacing = 2;
 	}
 
 	bool CheckCollisionMouseButton(Vector2 mousePosition, float buttonX, float buttonY, float buttonHeight, float buttonWidth)
@@ -148,29 +158,12 @@ namespace Asteroids
 		}
 	}
 
-	void ButtonTextDraw(Vector2 mousePosition)
+	void ButtonTextDraw(Font font)
 	{
-		DrawText(TextFormat("JUGAR"), play.textX, play.textY, play.textSize, BLUE);
-		DrawText(TextFormat("REGLAS"), rules.textX, rules.textY, rules.textSize, BLUE);
-		DrawText(TextFormat("CREDITOS"), credits.textX, credits.textY, credits.textSize, BLUE);
-		DrawText(TextFormat("SALIR"), exitGame.textX, exitGame.textY, exitGame.textSize, BLUE);
-
-		if (CheckCollisionMouseButton(mousePosition, play.position.x, play.position.y, play.size.y, play.size.x))
-		{
-			DrawText(TextFormat("JUGAR"), play.textX, play.textY, play.textSize, VIOLET);
-		}
-		else if (CheckCollisionMouseButton(mousePosition, rules.position.x, rules.position.y, rules.size.y, rules.size.x))
-		{
-			DrawText(TextFormat("REGLAS"), rules.textX, rules.textY, rules.textSize, VIOLET);
-		}
-		else if (CheckCollisionMouseButton(mousePosition, credits.position.x, credits.position.y, credits.size.y, credits.size.x))
-		{
-			DrawText(TextFormat("CREDITOS"), credits.textX, credits.textY, credits.textSize, VIOLET);
-		}
-		else if (CheckCollisionMouseButton(mousePosition, exitGame.position.x, exitGame.position.y, exitGame.size.y, exitGame.size.x))
-		{
-			DrawText(TextFormat("SALIR"), exitGame.textX, exitGame.textY, exitGame.textSize, VIOLET);
-		}
+		DrawTextEx(font, "PLAY", play.textPosition, play.fontSize, play.spacing, WHITE);
+		DrawTextEx(font, "RULES", rules.textPosition, rules.fontSize, rules.spacing, WHITE);
+		DrawTextEx(font, "CREDITS", credits.textPosition, credits.fontSize, credits.spacing, WHITE);
+		DrawTextEx(font, "EXIT", exitGame.textPosition, exitGame.fontSize, exitGame.spacing, WHITE);
 	}
 
 	void BackMenuButton()
@@ -183,11 +176,11 @@ namespace Asteroids
 			DrawRectangleV(back.position, back.size, BLUE);
 		}
 
-		DrawText(TextFormat("ATRAS"), back.textX, back.textY, back.textSize, BLUE);
+		DrawText(TextFormat("ATRAS"), back.textPosition.x, back.textPosition.y, back.textSize, BLUE);
 
 		if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
 		{
-			DrawText(TextFormat("ATRAS"), back.textX, back.textY, back.textSize, VIOLET);
+			DrawText(TextFormat("ATRAS"), back.textPosition.x, back.textPosition.y, back.textSize, VIOLET);
 		}
 	}
 }

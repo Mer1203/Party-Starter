@@ -64,7 +64,8 @@ namespace Asteroids
 		switch (currentScreen)
 		{
 		case Screen::Menu:
-			MenuDraw(backgroundMenu, playButton, rulesButton, creditsButton, exitButton, playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
+			MenuDraw(backgroundMenu, playButton, rulesButton, creditsButton, exitButton, 
+				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
 			break;
 		case Screen::Play:
 			GameplayDraw(backgroundGameplay, canion, confetti, piñataOne, piñataTwo, piñataThree);
