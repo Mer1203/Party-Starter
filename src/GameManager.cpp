@@ -21,12 +21,10 @@ namespace Asteroids
 			//Inicio los valores de todos los botones:
 			ButtonInit();
 			PlayerInit(canion);
-			//AsteroidsInit();
 			for (int i = 0; i < MAX_BULLETS; i++)
 			{
 				BulletsInit(bullets[i]);
 			}
-
 			GetMousePosition();
 			IsMousePressed();
 			break;
@@ -49,10 +47,11 @@ namespace Asteroids
 		}
 	}
 
-	void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti)
+	void Draw(Texture2D backgroundMenu, Texture2D backgroundGameplay, Texture2D canion, 
+		Texture2D confetti, Texture2D playButton, Texture2D rulesButton, Texture2D creditsButton, 
+		Texture2D exitButton, Texture2D playPressedButton, Texture2D rulesPressedButton, 
+		Texture2D creditsPressedButton, Texture2D exitPressedButton)
 	{
-		Vector2 mousePosition = GetMousePosition();
-
 		//DIBUJADO:
 		BeginDrawing();
 		ClearBackground(WHITE);
@@ -60,9 +59,7 @@ namespace Asteroids
 		switch (currentScreen)
 		{
 		case Screen::Menu:
-			MenuDraw(backgroundMenu);
-			ButtonDraw(mousePosition);
-			ButtonTextDraw(mousePosition);
+			MenuDraw(backgroundMenu, playButton, rulesButton, creditsButton, exitButton, playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton);
 			break;
 		case Screen::Play:
 			GameplayDraw(backgroundGameplay, canion, confetti);
