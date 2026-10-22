@@ -38,7 +38,7 @@ namespace Asteroids
 		currentBigAsteroid.direction.y = 0;
 		currentBigAsteroid.speed = MAX_BIG_ASTEROID_SPEED;
 		currentBigAsteroid.countTime = 0.0f;
-		currentBigAsteroid.radius = 40;
+		currentBigAsteroid.radius = 50;
 		currentBigAsteroid.isDestroyed = true;
 		currentBigAsteroid.maxTime = randomSpawnTime;
 	}
@@ -53,7 +53,7 @@ namespace Asteroids
 		currentMiddleAsteroid.direction.y = 0;
 		currentMiddleAsteroid.speed = MAX_MIDDLE_ASTEROID_SPEED;
 		currentMiddleAsteroid.countTime = 0.0f;
-		currentMiddleAsteroid.radius = 25;
+		currentMiddleAsteroid.radius = 35;
 		currentMiddleAsteroid.isDestroyed = true;
 		currentMiddleAsteroid.maxTime = randomSpawnTime;
 	}
@@ -68,7 +68,7 @@ namespace Asteroids
 		currentSmallAsteroid.direction.y = 0;
 		currentSmallAsteroid.speed = MAX_SMALL_ASTEROID_SPEED;
 		currentSmallAsteroid.countTime = 0.0f;
-		currentSmallAsteroid.radius = 10;
+		currentSmallAsteroid.radius = 20;
 		currentSmallAsteroid.isDestroyed = true;
 		currentSmallAsteroid.maxTime = randomSpawnTime;
 	}
@@ -90,7 +90,8 @@ namespace Asteroids
 		if (currentBigAsteroid.countTime <= currentBigAsteroid.maxTime)
 		{
 			SpawnBigAsteroid();
-			SetAsteroidDirection(currentBigAsteroid);
+			currentBigAsteroid.countTime = 0.0f;
+			currentBigAsteroid.maxTime = static_cast<float>(rand() % (5 - 2 + 1) + 2);
 		}
 	}
 
@@ -102,6 +103,7 @@ namespace Asteroids
 			if (bigAsteroid[i].isDestroyed == true)
 			{
 				BigAsteroidInit(bigAsteroid[i]);
+				SetAsteroidDirection(bigAsteroid[i]);
 
 				bigAsteroid[i].isDestroyed = false;
 
@@ -110,13 +112,14 @@ namespace Asteroids
 		}
 	}
 
-	void SpawnMiddleAsteroid()
+	void SpawnMiddleAsteroid(Vector2 position)
 	{
 		for (int i = 0; i < MAX_ASTEROIDS; i++)
 		{
 			if (middleAsteroid[i].isDestroyed == true)
 			{
 				MiddleAsteroidInit(middleAsteroid[i]);
+				middleAsteroid[i].position = position;
 				SetAsteroidDirection(middleAsteroid[i]);
 
 				middleAsteroid[i].isDestroyed = false;
@@ -126,13 +129,14 @@ namespace Asteroids
 		}
 	}
 
-	void SpawnSmallAsteroid()
+	void SpawnSmallAsteroid(Vector2 position)
 	{
 		for (int i = 0; i < MAX_ASTEROIDS; i++)
 		{
 			if (smallAsteroid[i].isDestroyed == true)
 			{
 				SmallAsteroidInit(smallAsteroid[i]);
+				smallAsteroid[i].position = position;
 				SetAsteroidDirection(smallAsteroid[i]);
 
 				smallAsteroid[i].isDestroyed = false;
@@ -146,192 +150,198 @@ namespace Asteroids
 	{
 		bool inCollision = false;
 
+		SpawnTimeAsteroids(bigAsteroid[0], delta);
+
 		for (int i = 0; i < MAX_ASTEROIDS; i++)
 		{
-			SpawnTimeAsteroids(bigAsteroid[i], delta);
-
 			if (bigAsteroid[i].isDestroyed == false)
 			{
+				bigAsteroid[i].position.x += bigAsteroid[i].direction.x * bigAsteroid[i].speed * delta;
+				bigAsteroid[i].position.y += bigAsteroid[i].direction.y * bigAsteroid[i].speed * delta;
+
 				GoToaSidetoAnother(bigAsteroid[i]);
 			}
 
 			if (middleAsteroid[i].isDestroyed == false)
 			{
+				middleAsteroid[i].position.x += middleAsteroid[i].direction.x * middleAsteroid[i].speed * delta;
+				middleAsteroid[i].position.y += middleAsteroid[i].direction.y * middleAsteroid[i].speed * delta;
+
 				GoToaSidetoAnother(middleAsteroid[i]);
 			}
 
 			if (smallAsteroid[i].isDestroyed == false)
 			{
+				smallAsteroid[i].position.x += smallAsteroid[i].direction.x * smallAsteroid[i].speed * delta;
+				smallAsteroid[i].position.y += smallAsteroid[i].direction.y * smallAsteroid[i].speed * delta;
+
 				GoToaSidetoAnother(smallAsteroid[i]);
 			}
 		}
 
 		for (int i = 0; i < MAX_BULLETS; i++)
 		{
-			if (bullets[i].isActive)
+			if (bullets[i].isActive == false)
 			{
-				//COLISION DEL ASTEROIDE GRANDE
-				inCollision = false;
-				for (int j = 0; j < MAX_ASTEROIDS; j++)
+				continue; //Avanza entre las balas para ver cual esta activa
+			}
+			//COLISION DEL ASTEROIDE GRANDE
+			inCollision = false;
+
+			for (int j = 0; j < MAX_ASTEROIDS; j++)
+			{
+				if (bigAsteroid[j].isDestroyed == false)
 				{
-					if (bigAsteroid[j].isDestroyed == false)
-					{
-						bigAsteroid[j].position.x += bigAsteroid[j].direction.x * bigAsteroid[j].speed * delta;
-						bigAsteroid[j].position.y += bigAsteroid[j].direction.y * bigAsteroid[j].speed * delta;
-
-
-
-
-						inCollision = CollisionCircleCircle(bigAsteroid[j].position, bigAsteroid[j].radius, bullets[i].position, bullets[i].radius);
-
-						if (inCollision)
-						{
-							bigAsteroid[j].isDestroyed = true;
-							bullets[i].isActive = false;
-							player.score++;
-
-							int quantity = 0;
-
-							Vector2 spawnPosition = bigAsteroid[j].position;
-
-							spawnPosition.x += bigAsteroid[j].radius + 10;
-
-							while (quantity < 2)
-							{
-								SpawnMiddleAsteroid();
-
-								quantity++;
-
-								spawnPosition = bigAsteroid[j].position;
-								spawnPosition.x -= bigAsteroid[j].radius - 10;
-							}
-
-							break;
-						}
-
-					}
-
-					//COLISION DEL ASTEROIDE MEDIANO
-					inCollision = false;
-
-					for (int k = 0; k < MAX_ASTEROIDS; k++)
-					{
-						if (middleAsteroid[k].isDestroyed == false)
-						{
-							inCollision = CollisionCircleCircle(middleAsteroid[k].position, middleAsteroid[k].radius, bullets[i].position, bullets[i].radius);
-
-							if (inCollision)
-							{
-								middleAsteroid[k].isDestroyed = true;
-								bullets[i].isActive = false;
-								player.score++;
-
-								int quantity = 0;
-
-								Vector2 spawnPosition = middleAsteroid[k].position;
-
-								spawnPosition.x += middleAsteroid[k].radius + 10;
-
-								while (quantity < 2)
-								{
-									SpawnSmallAsteroid();
-
-									quantity++;
-
-									spawnPosition = middleAsteroid[k].position;
-									spawnPosition.x -= middleAsteroid[k].radius - 10;
-
-								}
-								break;
-							}
-						}
-					}
-
-					//COLISION DEL ASTEROIDE MAS CHIQUITO
-					inCollision = false;
-					for (int k = 0; k < MAX_ASTEROIDS; k++)
-					{
-						if (smallAsteroid[k].isDestroyed == false)
-						{
-							inCollision = CollisionCircleCircle(smallAsteroid[k].position, smallAsteroid[k].radius, bullets[i].position, bullets[i].radius);
-
-							if (inCollision)
-							{
-								smallAsteroid[k].isDestroyed = true;
-								bullets[i].isActive = false;
-								player.score++;
-							}
-						}
-					}
+					inCollision = CollisionCircleCircle(bigAsteroid[j].position, bigAsteroid[j].radius, bullets[i].position, bullets[i].radius);
 
 					if (inCollision)
 					{
+						bigAsteroid[j].isDestroyed = true;
+						bullets[i].isActive = false;
+						player.score++;
+
+						int quantity = 0;
+
+						Vector2 spawnPosition = bigAsteroid[j].position;
+
+						spawnPosition.x += bigAsteroid[j].radius + 10;
+
+						while (quantity < 2)
+						{
+							SpawnMiddleAsteroid(spawnPosition);
+
+							quantity++;
+
+							spawnPosition = bigAsteroid[j].position;
+							spawnPosition.x -= bigAsteroid[j].radius - 10;
+						}
+
 						break;
 					}
 				}
 			}
 
-		}
-
-	}
-
-	void BigAsteroidDraw()
-	{
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
-		{
-			if (bigAsteroid[i].isDestroyed == false)
+			if (inCollision)
 			{
-#ifdef _DEBUG
-				DrawCircleV(bigAsteroid[i].position, bigAsteroid[i].radius, RED);
-#endif
+				continue; // Si colisiona, pasa a la siguiente iteracion
+			}
+
+			for (int k = 0; k < MAX_ASTEROIDS; k++)
+			{
+				if (middleAsteroid[k].isDestroyed == false)
+				{
+					inCollision = CollisionCircleCircle(middleAsteroid[k].position, middleAsteroid[k].radius, bullets[i].position, bullets[i].radius);
+
+					if (inCollision)
+					{
+						middleAsteroid[k].isDestroyed = true;
+						bullets[i].isActive = false;
+						player.score++;
+
+						int quantity = 0;
+
+						Vector2 spawnPosition = middleAsteroid[k].position;
+
+						spawnPosition.x += middleAsteroid[k].radius + 10;
+
+						while (quantity < 2)
+						{
+							SpawnSmallAsteroid(spawnPosition);
+
+							quantity++;
+
+							spawnPosition = middleAsteroid[k].position;
+							spawnPosition.x -= middleAsteroid[k].radius - 10;
+						}
+
+						break;
+					}
+				}
+			}
+
+			if (inCollision)
+			{
+				continue;
+			}
+
+			//COLISION DEL ASTEROIDE MAS CHIQUITO
+
+			for (int k = 0; k < MAX_ASTEROIDS; k++)
+			{
+				if (smallAsteroid[k].isDestroyed == false)
+				{
+					inCollision = CollisionCircleCircle(smallAsteroid[k].position, smallAsteroid[k].radius, bullets[i].position, bullets[i].radius);
+
+					if (inCollision)
+					{
+						smallAsteroid[k].isDestroyed = true;
+						bullets[i].isActive = false;
+						player.score++;
+						break;
+					}
+				}
 			}
 		}
 	}
 
-	void MiddleAsteroidDraw()
+
+void BigAsteroidDraw()
+{
+	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
+		if (bigAsteroid[i].isDestroyed == false)
 		{
-			if (middleAsteroid[i].isDestroyed == false)
-			{
 #ifdef _DEBUG
-				DrawCircleV(middleAsteroid[i].position, middleAsteroid[i].radius, RED);
+			DrawCircleV(bigAsteroid[i].position, bigAsteroid[i].radius, RED);
 #endif
-			}
 		}
 	}
+}
 
-	void SmallAsteroidDraw()
+void MiddleAsteroidDraw()
+{
+	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		for (int i = 0; i < MAX_ASTEROIDS; i++)
+		if (middleAsteroid[i].isDestroyed == false)
 		{
-			if (smallAsteroid[i].isDestroyed == false)
-			{
 #ifdef _DEBUG
-				DrawCircleV(smallAsteroid[i].position, smallAsteroid[i].radius, RED);
+			DrawCircleV(middleAsteroid[i].position, middleAsteroid[i].radius, RED);
 #endif
-			}
 		}
 	}
+}
 
-	void GoToaSidetoAnother(Asteroids& asteroid)
+void SmallAsteroidDraw()
+{
+	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
-		if (asteroid.position.x > WINDOW_WIDTH)
+		if (smallAsteroid[i].isDestroyed == false)
 		{
-			asteroid.position.x = 0;
-		}
-		else if (asteroid.position.x < 0)
-		{
-			asteroid.position.x = WINDOW_WIDTH;
-		}
-
-		if (asteroid.position.y > WINDOW_HEIGHT)
-		{
-			asteroid.position.y = 0;
-		}
-		else if (asteroid.position.y < 0)
-		{
-			asteroid.position.y = WINDOW_HEIGHT;
+#ifdef _DEBUG
+			DrawCircleV(smallAsteroid[i].position, smallAsteroid[i].radius, RED);
+#endif
 		}
 	}
+}
+
+void GoToaSidetoAnother(Asteroids& asteroid)
+{
+	if (asteroid.position.x > WINDOW_WIDTH)
+	{
+		asteroid.position.x = 0;
+	}
+	else if (asteroid.position.x < 0)
+	{
+		asteroid.position.x = WINDOW_WIDTH;
+	}
+
+	if (asteroid.position.y > WINDOW_HEIGHT)
+	{
+		asteroid.position.y = 0;
+	}
+	else if (asteroid.position.y < 0)
+	{
+		asteroid.position.y = WINDOW_HEIGHT;
+	}
+}
 }

@@ -22,6 +22,7 @@ namespace Asteroids
 			//Inicio los valores de todos los botones:
 			ButtonInit();
 			PlayerInit(canion);
+			AsteroidsInitAll();
 			for (int i = 0; i < MAX_BULLETS; i++)
 			{
 				BulletsInit(bullets[i]);

@@ -19,9 +19,9 @@ namespace Asteroids
 
 	const int MAX_ASTEROIDS = 30;
 
-	const int MAX_BIG_ASTEROID_SPEED = 300;
-	const int MAX_MIDDLE_ASTEROID_SPEED = 200;
-	const int MAX_SMALL_ASTEROID_SPEED = 100;
+	const int MAX_BIG_ASTEROID_SPEED = 100;
+	const int MAX_MIDDLE_ASTEROID_SPEED = 120;
+	const int MAX_SMALL_ASTEROID_SPEED = 140;
 	
 	extern Asteroids bigAsteroid[MAX_ASTEROIDS];
 	extern Asteroids middleAsteroid[MAX_ASTEROIDS];
@@ -36,8 +36,8 @@ namespace Asteroids
 	void SpawnTimeAsteroids(Asteroids& currentBigAsteroid, float delta);
 	
 	void SpawnBigAsteroid();
-	void SpawnMiddleAsteroid();
-	void SpawnSmallAsteroid();
+	void SpawnMiddleAsteroid(Vector2 position);
+	void SpawnSmallAsteroid(Vector2 position);
 
 	void AsteroidsUpdate(float delta);
 
