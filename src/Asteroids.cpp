@@ -345,22 +345,22 @@ void SmallAsteroidDraw()
 
 void GoToaSidetoAnother(Asteroids& asteroid)
 {
-	if (asteroid.position.x > WINDOW_WIDTH)
+	if (asteroid.position.x - asteroid.radius > WINDOW_WIDTH)
 	{
-		asteroid.position.x = 0;
+		asteroid.position.x = 0 + asteroid.radius;
 	}
-	else if (asteroid.position.x < 0)
+	else if (asteroid.position.x + asteroid.radius < 0)
 	{
-		asteroid.position.x = WINDOW_WIDTH;
+		asteroid.position.x = WINDOW_WIDTH - asteroid.radius;
 	}
 
-	if (asteroid.position.y > WINDOW_HEIGHT)
+	if (asteroid.position.y - asteroid.radius > WINDOW_HEIGHT)
 	{
-		asteroid.position.y = 0;
+		asteroid.position.y = 0 + asteroid.radius;
 	}
-	else if (asteroid.position.y < 0)
+	else if (asteroid.position.y + asteroid.radius < 0)
 	{
-		asteroid.position.y = WINDOW_HEIGHT;
+		asteroid.position.y = WINDOW_HEIGHT - asteroid.radius;
 	}
 }
 }
