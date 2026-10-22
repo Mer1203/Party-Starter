@@ -183,16 +183,21 @@ namespace Asteroids
 		}
 	}
 
-	//void PauseButton(Texture2D backButton, Texture2D backButtonPressed)
-	//{
-	//	Vector2 mousePosition = GetMousePosition();
+	void PauseButton(Texture2D pauseButton, Texture2D pauseButtonPressed)
+	{
+		Vector2 mousePosition = GetMousePosition();
+#ifdef _DEBUG
+		DrawRectangleV(back.position, back.size, VIOLET);
+#endif
+		DrawTextureEx(pauseButton, back.textPosition, 0, 0.07f, WHITE);
 
-	//	DrawTextureEx(backButton, back.position, 0, 1, WHITE);
-
-	//	if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
-	//	{
-	//		DrawTextureEx(backButtonPressed, back.position, 0, 1, WHITE);
-	//	}
-	//}
+		if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
+		{
+#ifdef _DEBUG
+			DrawRectangleV(back.position, back.size, BLUE);
+#endif
+			DrawTextureEx(pauseButtonPressed, back.textPosition, 0, 0.07f, WHITE);
+		}
+	}
 
 }

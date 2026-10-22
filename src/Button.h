@@ -33,4 +33,5 @@ namespace Asteroids
 	void ButtonTextDraw(Font font);
 
 	void BackButton(Texture2D backButton, Texture2D backButtonPressed);
+	void PauseButton(Texture2D pauseButton, Texture2D pauseButtonPressed);
 }
