@@ -27,6 +27,7 @@ namespace Asteroids
 	extern Asteroids middleAsteroid[MAX_ASTEROIDS];
 	extern Asteroids smallAsteroid[MAX_ASTEROIDS];
 
+	void AsteroidsInitAll();
 	void BigAsteroidInit(Asteroids& currentBigAsteroid);
 	void MiddleAsteroidInit(Asteroids& currentMiddleAsteroid);
 	void SmallAsteroidInit(Asteroids& currentSmallAsteroid);

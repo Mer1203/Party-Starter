@@ -14,6 +14,20 @@ namespace Asteroids
 	Asteroids middleAsteroid[MAX_ASTEROIDS];
 	Asteroids smallAsteroid[MAX_ASTEROIDS];
 
+	void AsteroidsInitAll()
+	{
+		for (int i = 0; i < MAX_ASTEROIDS; i++)
+		{
+			BigAsteroidInit(bigAsteroid[i]);
+			MiddleAsteroidInit(middleAsteroid[i]);
+			SmallAsteroidInit(smallAsteroid[i]);
+
+			bigAsteroid[i].isDestroyed = true;
+			middleAsteroid[i].isDestroyed = true;
+			smallAsteroid[i].isDestroyed = true;
+		}
+	}
+
 	void BigAsteroidInit(Asteroids& currentBigAsteroid)
 	{
 		float randomSpawnTime = static_cast<float>(rand() % (5 - 2 + 1) + 2);
