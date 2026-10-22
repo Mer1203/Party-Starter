@@ -157,6 +157,7 @@
     <ClCompile Include="src\ScreenCredits.cpp" />
     <ClCompile Include="src\ScreenExit.cpp" />
     <ClCompile Include="src\ScreenMenu.cpp" />
+    <ClCompile Include="src\ScreenPause.cpp" />
     <ClCompile Include="src\ScreenPlay.cpp" />
     <ClCompile Include="src\ScreenRules.cpp" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="src\ScreenCredits.h" />
     <ClInclude Include="src\ScreenExit.h" />
     <ClInclude Include="src\ScreenMenu.h" />
+    <ClInclude Include="src\ScreenPause.h" />
     <ClInclude Include="src\ScreenPlay.h" />
     <ClInclude Include="src\ScreenRules.h" />
   </ItemGroup>
