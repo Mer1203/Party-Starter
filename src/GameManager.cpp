@@ -1,4 +1,6 @@
 #include "GameManager.h"
+#include "ScreenCredits.h"
+#include "ScreenRules.h"
 #include "ScreenMenu.h"
 #include "ScreenExit.h"
 #include "ScreenPlay.h"
@@ -73,6 +75,7 @@ namespace Asteroids
 			PauseButton(pauseButton, pauseButtonPressed);
 			break;
 		case Screen::Rules:
+			RulesDraw(backgroundGameplay);
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Credits:

@@ -3,5 +3,5 @@
 
 namespace Asteroids
 {
-
+	void RulesDraw(Texture backgroundGameplay);
 }
