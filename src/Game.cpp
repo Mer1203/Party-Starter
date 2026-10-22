@@ -29,6 +29,9 @@ namespace Asteroids
 		Texture2D rulesPressedButton = LoadTexture("res/Buttons/VIOLET_BUTTON_PRESSED.png");
 		Texture2D creditsPressedButton = LoadTexture("res/Buttons/GREEN_BUTTON_PRESSED.png");
 		Texture2D exitPressedButton = LoadTexture("res/Buttons/BLUE_BUTTON_PRESSED.png");
+		Texture2D piñataOne = LoadTexture("res/Asteroids/PiniataOne.png");
+		Texture2D piñataTwo = LoadTexture("res/Asteroids/PiniataTwo.png");
+		Texture2D piñataThree = LoadTexture("res/Asteroids/PiniataThree.png");
 
 		while (!WindowShouldClose() && gameIsRunning)
 		{
@@ -36,7 +39,8 @@ namespace Asteroids
 			Update(delta, gameIsRunning, canion);
 
 			Draw(backgroundMenu, backgroundGameplay, canion, confetti, playButton, rulesButton, creditsButton, exitButton,
-				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
+				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font, piñataOne, 
+				piñataTwo, piñataThree);
 		}
 
 		UnloadTexture(backgroundMenu);

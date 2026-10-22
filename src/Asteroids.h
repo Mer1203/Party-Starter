@@ -45,7 +45,7 @@ namespace Asteroids
 
 	void GoToaSidetoAnother(Asteroids& asteroid);
 
-	void BigAsteroidDraw();
-	void MiddleAsteroidDraw();
-	void SmallAsteroidDraw();
+	void BigAsteroidDraw(Texture2D piñataOne);
+	void MiddleAsteroidDraw(Texture2D piñataTwo);
+	void SmallAsteroidDraw(Texture2D piñataThree);
 }

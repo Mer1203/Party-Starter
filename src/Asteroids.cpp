@@ -68,7 +68,7 @@ namespace Asteroids
 		currentSmallAsteroid.direction.y = 0;
 		currentSmallAsteroid.speed = MAX_SMALL_ASTEROID_SPEED;
 		currentSmallAsteroid.countTime = 0.0f;
-		currentSmallAsteroid.radius = 20;
+		currentSmallAsteroid.radius = 25;
 		currentSmallAsteroid.isDestroyed = true;
 		currentSmallAsteroid.maxTime = randomSpawnTime;
 	}
@@ -304,7 +304,7 @@ namespace Asteroids
 	}
 
 
-void BigAsteroidDraw()
+void BigAsteroidDraw(Texture2D piñataOne)
 {
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
@@ -313,11 +313,17 @@ void BigAsteroidDraw()
 #ifdef _DEBUG
 			DrawCircleV(bigAsteroid[i].position, bigAsteroid[i].radius, RED);
 #endif
+
+			Vector2 position = bigAsteroid[i].position;
+			position.x -= 105;
+			position.y -= 80;
+
+			DrawTextureEx(piñataOne, position, 0, 0.1f, WHITE);
 		}
 	}
 }
 
-void MiddleAsteroidDraw()
+void MiddleAsteroidDraw(Texture2D piñataTwo)
 {
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
@@ -326,11 +332,16 @@ void MiddleAsteroidDraw()
 #ifdef _DEBUG
 			DrawCircleV(middleAsteroid[i].position, middleAsteroid[i].radius, RED);
 #endif
+			Vector2 position = middleAsteroid[i].position;
+			position.x -= 70;
+			position.y -= 55;
+
+			DrawTextureEx(piñataTwo, position, 0, 0.07f, WHITE);
 		}
 	}
 }
 
-void SmallAsteroidDraw()
+void SmallAsteroidDraw(Texture2D piñataThree)
 {
 	for (int i = 0; i < MAX_ASTEROIDS; i++)
 	{
@@ -339,6 +350,12 @@ void SmallAsteroidDraw()
 #ifdef _DEBUG
 			DrawCircleV(smallAsteroid[i].position, smallAsteroid[i].radius, RED);
 #endif
+			Vector2 position = smallAsteroid[i].position;
+			position.x -= 52;
+			position.y -= 40;
+
+			DrawTextureEx(piñataThree, position, 0, 0.05f, WHITE);
+
 		}
 	}
 }
