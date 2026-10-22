@@ -19,6 +19,8 @@ namespace Asteroids
 
 	const int MAX_ASTEROIDS = 30;
 
+	const int MAX_BIG_SPAWN = 5;
+
 	const int MAX_BIG_ASTEROID_SPEED = 100;
 	const int MAX_MIDDLE_ASTEROID_SPEED = 120;
 	const int MAX_SMALL_ASTEROID_SPEED = 140;

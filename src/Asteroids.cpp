@@ -30,7 +30,7 @@ namespace Asteroids
 
 	void BigAsteroidInit(Asteroids& currentBigAsteroid)
 	{
-		float randomSpawnTime = static_cast<float>(rand() % (5 - 2 + 1) + 2);
+		float randomSpawnTime = static_cast<float>(rand() % (8 - 4 + 1) + 4);
 
 		currentBigAsteroid.position.x = 0;
 		currentBigAsteroid.position.y = 0;
@@ -45,7 +45,7 @@ namespace Asteroids
 
 	void MiddleAsteroidInit(Asteroids& currentMiddleAsteroid)
 	{
-		float randomSpawnTime = static_cast<float>(rand() % (5 - 2 + 1) + 1);
+		float randomSpawnTime = static_cast<float>(rand() % (8 - 4 + 1) + 4);
 
 		currentMiddleAsteroid.position.x = 0;
 		currentMiddleAsteroid.position.y = 0;
@@ -60,7 +60,7 @@ namespace Asteroids
 
 	void SmallAsteroidInit(Asteroids& currentSmallAsteroid)
 	{
-		float randomSpawnTime = static_cast<float>(rand() % (5 - 2 + 1) + 1);
+		float randomSpawnTime = static_cast<float>(rand() % (8 - 4 + 1) + 4);
 
 		currentSmallAsteroid.position.x = 0;
 		currentSmallAsteroid.position.y = 0;
@@ -85,16 +85,33 @@ namespace Asteroids
 
 	void SpawnTimeAsteroids(Asteroids& currentBigAsteroid, float delta)
 	{
+		if (currentBigAsteroid.isDestroyed == false)
+		{
+			return;
+		}
+
 		currentBigAsteroid.countTime += delta;
 
-		if (currentBigAsteroid.countTime <= currentBigAsteroid.maxTime)
+		if (currentBigAsteroid.countTime >= currentBigAsteroid.maxTime)
 		{
-			SpawnBigAsteroid();
-			currentBigAsteroid.countTime = 0.0f;
-			currentBigAsteroid.maxTime = static_cast<float>(rand() % (5 - 2 + 1) + 2);
+			BigAsteroidInit(currentBigAsteroid);
+
+			currentBigAsteroid.isDestroyed = false;
+
+			if (rand() % 2 == 0)
+			{
+				currentBigAsteroid.position.x = 0;
+				currentBigAsteroid.position.y = static_cast<float>(rand() % WINDOW_HEIGHT);
+			}
+			else
+			{
+				currentBigAsteroid.position.x = static_cast<float>(rand() % WINDOW_WIDTH);
+				currentBigAsteroid.position.y = 0;
+			}
+
+			SetAsteroidDirection(currentBigAsteroid);
 		}
 	}
-
 
 	void SpawnBigAsteroid()
 	{
@@ -150,10 +167,12 @@ namespace Asteroids
 	{
 		bool inCollision = false;
 
-		SpawnTimeAsteroids(bigAsteroid[0], delta);
-
 		for (int i = 0; i < MAX_ASTEROIDS; i++)
 		{
+			if (i < MAX_BIG_SPAWN)
+			{
+				SpawnTimeAsteroids(bigAsteroid[i], delta);
+			}
 			if (bigAsteroid[i].isDestroyed == false)
 			{
 				bigAsteroid[i].position.x += bigAsteroid[i].direction.x * bigAsteroid[i].speed * delta;
@@ -213,7 +232,7 @@ namespace Asteroids
 							quantity++;
 
 							spawnPosition = bigAsteroid[j].position;
-							spawnPosition.x -= bigAsteroid[j].radius - 10;
+							spawnPosition.x -= bigAsteroid[j].radius + 10;
 						}
 
 						break;
@@ -251,7 +270,7 @@ namespace Asteroids
 							quantity++;
 
 							spawnPosition = middleAsteroid[k].position;
-							spawnPosition.x -= middleAsteroid[k].radius - 10;
+							spawnPosition.x -= middleAsteroid[k].radius + 10;
 						}
 
 						break;
