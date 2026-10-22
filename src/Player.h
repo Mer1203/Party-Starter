@@ -22,7 +22,7 @@ namespace Asteroids
 	extern Rectangle canionSource;
 	extern Rectangle canionDestination;
 
-	const int MAX_PLAYER_SPEED = 400;
+	const int MAX_PLAYER_SPEED = 300;
 
 	void PlayerInit(Texture2D canion);
 	void PlayerUpdate(float delta);
