@@ -59,8 +59,8 @@ namespace Asteroids
 		back.position.y = 0;
 		back.size.y = 70;
 		back.size.x = 70;
-		back.textPosition.x = 10;
-		back.textPosition.y = 6;
+		back.textPosition.x = - 40;
+		back.textPosition.y = - 20;
 		back.textSize = 20;
 		back.fontSize = 30;
 		back.spacing = 2;
@@ -166,21 +166,33 @@ namespace Asteroids
 		DrawTextEx(font, "EXIT", exitGame.textPosition, exitGame.fontSize, exitGame.spacing, WHITE);
 	}
 
-	void BackMenuButton()
+	void BackButton(Texture2D backButton, Texture2D backButtonPressed)
 	{
 		Vector2 mousePosition = GetMousePosition();
+#ifdef _DEBUG
 		DrawRectangleV(back.position, back.size, VIOLET);
+#endif
+		DrawTextureEx(backButton, back.textPosition, 0, 0.07f, WHITE);
 
 		if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
 		{
+#ifdef _DEBUG
 			DrawRectangleV(back.position, back.size, BLUE);
-		}
-
-		DrawText(TextFormat("ATRAS"), back.textPosition.x, back.textPosition.y, back.textSize, BLUE);
-
-		if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
-		{
-			DrawText(TextFormat("ATRAS"), back.textPosition.x, back.textPosition.y, back.textSize, VIOLET);
+#endif
+			DrawTextureEx(backButtonPressed, back.textPosition, 0, 0.07f, WHITE);
 		}
 	}
+
+	//void PauseButton(Texture2D backButton, Texture2D backButtonPressed)
+	//{
+	//	Vector2 mousePosition = GetMousePosition();
+
+	//	DrawTextureEx(backButton, back.position, 0, 1, WHITE);
+
+	//	if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
+	//	{
+	//		DrawTextureEx(backButtonPressed, back.position, 0, 1, WHITE);
+	//	}
+	//}
+
 }

@@ -55,7 +55,7 @@ namespace Asteroids
 		Texture2D confetti, Texture2D playButton, Texture2D rulesButton, Texture2D creditsButton,
 		Texture2D exitButton, Texture2D playPressedButton, Texture2D rulesPressedButton,
 		Texture2D creditsPressedButton, Texture2D exitPressedButton, Font font, Texture2D piñataOne, 
-		Texture2D piñataTwo,Texture2D piñataThree)
+		Texture2D piñataTwo,Texture2D piñataThree, Texture2D backButton, Texture2D backButtonPressed)
 	{
 		//DIBUJADO:
 		BeginDrawing();
@@ -70,13 +70,13 @@ namespace Asteroids
 		case Screen::Play:
 			GameplayDraw(backgroundGameplay, canion, confetti, piñataOne, piñataTwo, piñataThree);
 			//Provisorio, despues cambiar a boton de pausa!
-			BackMenuButton();
+			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Rules:
-			BackMenuButton();
+			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Credits:
-			BackMenuButton();
+			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Exit:
 			break;

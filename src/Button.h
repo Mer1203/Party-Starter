@@ -32,5 +32,5 @@ namespace Asteroids
 		Texture2D exitPressedButton);
 	void ButtonTextDraw(Font font);
 
-	void BackMenuButton();
+	void BackButton(Texture2D backButton, Texture2D backButtonPressed);
 }
