@@ -16,7 +16,7 @@ namespace Asteroids
 
 		InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Party Starter!");
 
-		Font font = LoadFont("res/Font/Super Wonder.ttf");
+		Font font = LoadFontEx("res/Font/Super Wonder.ttf", 200, NULL, 0);
 		Texture2D backgroundMenu = LoadTexture("res/Backgrounds/BackgroundMenu.png");
 		Texture2D backgroundGameplay = LoadTexture("res/Backgrounds/BackgroundTwo_Gameplay.png");
 		Texture2D canion = LoadTexture("res/Ship/Canion.png");
@@ -36,7 +36,7 @@ namespace Asteroids
 			Update(delta, gameIsRunning, canion);
 
 			Draw(backgroundMenu, backgroundGameplay, canion, confetti, playButton, rulesButton, creditsButton, exitButton,
-				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton);
+				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
 		}
 
 		UnloadTexture(backgroundMenu);

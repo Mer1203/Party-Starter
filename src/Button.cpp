@@ -49,8 +49,8 @@ namespace Asteroids
 
 		back.position.x = 0;
 		back.position.y = 0;
-		back.size.y = 90;
-		back.size.x = 30;
+		back.size.y = 70;
+		back.size.x = 70;
 		back.textX = 10;
 		back.textY = 6;
 		back.textSize = 20;
