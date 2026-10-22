@@ -5,15 +5,14 @@
 
 namespace Asteroids
 {
-	bool CollisionCircleCircle(float circleOneX, float circleOneY, float circleOneRadious,
-		float circleTwoX, float circleTwoY, float circleTwoRadious)
+	bool CollisionCircleCircle(Vector2 circleOne, float circleOneRadious, Vector2 circleTwo, float circleTwoRadious)
 	{
 		float distanceX = 0.0f;
 		float distanceY = 0.0f;
 		float distance = 0.0f;
 
-		distanceX = circleOneX - circleTwoX;
-		distanceY = circleOneY - circleTwoY;
+		distanceX = circleOne.x - circleTwo.x;
+		distanceY = circleOne.y - circleTwo.y;
 
 		distance = static_cast<float>(sqrt((distanceX * distanceX) + (distanceY * distanceY)));
 
