@@ -75,13 +75,12 @@ namespace Asteroids
 
 	void SetAsteroidDirection(Asteroids& currentAsteroid)
 	{
-		int randomDirection = 0;
+		do
+		{
+			currentAsteroid.direction.x = static_cast<float>(rand() % 3 - 1);
+			currentAsteroid.direction.y = static_cast<float>(rand() % 3 - 1);
 
-		//Dandole una direccion random:
-		randomDirection = rand() % (1 - (-1) + 1);
-		currentAsteroid.direction.x = static_cast<float>(randomDirection);
-		randomDirection = rand() % (1 - (-1) + 1);
-		currentAsteroid.direction.y = static_cast<float>(randomDirection);
+		} while (currentAsteroid.direction.x == 0 && currentAsteroid.direction.y == 0);
 	}
 
 	void SpawnTimeAsteroids(Asteroids& currentBigAsteroid, float delta)
