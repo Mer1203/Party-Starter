@@ -8,6 +8,7 @@ namespace Asteroids
 		Vector2 position;
 		Vector2 direction;
 		Vector2 speed;
+		int score;
 		int height;
 		int width;
 		float rotation;
