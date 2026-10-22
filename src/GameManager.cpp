@@ -48,6 +48,10 @@ namespace Asteroids
 		case Screen::Exit:
 			ExitUpdate(gameIsRunning);
 			break;
+		case Screen::GameOver:
+			break;
+		case Screen::Pause:
+			break;
 		default:
 			break;
 		}
@@ -83,6 +87,10 @@ namespace Asteroids
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Exit:
+			break;
+		case Screen::GameOver:
+			break;
+		case Screen::Pause:
 			break;
 		default:
 			break;
