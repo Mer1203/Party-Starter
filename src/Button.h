@@ -20,12 +20,14 @@ namespace Asteroids
 	extern Button credits;
 	extern Button exitGame;
 	extern Button back;
+	extern Button pause;
 
 	void ButtonInit();
 
 	bool CheckCollisionMouseButton(Vector2 mousePosition, float buttonX, float buttonY, float buttonHeight, float buttonWidth);
 	void IsMousePressed();
 	void IsMousePressingBackButton();
+	void IsMousePressingPauseButton();
 
 	void ButtonDraw(Vector2 mousePosition, Texture2D playButton, Texture2D rulesButton, Texture2D creditsButton,
 		Texture2D exitButton, Texture2D playPressedButton, Texture2D rulesPressedButton, Texture2D creditsPressedButton,

@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "ScreenCredits.h"
 #include "ScreenRules.h"
+#include "ScreenPause.h"
 #include "ScreenMenu.h"
 #include "ScreenExit.h"
 #include "ScreenPlay.h"
@@ -20,9 +21,12 @@ namespace Asteroids
 		switch (currentScreen)
 		{
 		case Screen::Menu:
-			MenuInit();
 			//Inicio los valores de todos los botones:
 			ButtonInit();
+			PauseInit();
+			IsMousePressed();
+
+			MenuInit();
 			PlayerInit(canion);
 			AsteroidsInitAll();
 			for (int i = 0; i < MAX_BULLETS; i++)
@@ -30,14 +34,13 @@ namespace Asteroids
 				BulletsInit(bullets[i]);
 			}
 			GetMousePosition();
-			IsMousePressed();
 			break;
 		case Screen::Play:
 			PlayerUpdate(delta);
 			ShotBullet(delta);
 			AsteroidsUpdate(delta);
-
-			IsMousePressingBackButton();
+			PauseUpdate();
+			IsMousePressingPauseButton();
 			break;
 		case Screen::Rules:
 			IsMousePressingBackButton();
@@ -51,6 +54,7 @@ namespace Asteroids
 		case Screen::GameOver:
 			break;
 		case Screen::Pause:
+			IsMousePressingButtonPause();
 			break;
 		default:
 			break;
@@ -62,7 +66,8 @@ namespace Asteroids
 		Texture2D exitButton, Texture2D playPressedButton, Texture2D rulesPressedButton,
 		Texture2D creditsPressedButton, Texture2D exitPressedButton, Font font, Texture2D piñataOne, 
 		Texture2D piñataTwo,Texture2D piñataThree, Texture2D backButton, Texture2D backButtonPressed,
-		Texture2D pauseButton, Texture2D pauseButtonPressed)
+		Texture2D pauseButton, Texture2D pauseButtonPressed, Texture2D pauseButtonScreen,
+		Texture2D pauseButtonScreenPressed)
 	{
 		//DIBUJADO:
 		BeginDrawing();
@@ -91,6 +96,9 @@ namespace Asteroids
 		case Screen::GameOver:
 			break;
 		case Screen::Pause:
+			PauseDraw(backgroundGameplay, canion, confetti,
+				piñataOne, piñataTwo, piñataThree, font, pauseButtonScreen,
+				pauseButtonScreenPressed);
 			break;
 		default:
 			break;

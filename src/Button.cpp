@@ -8,6 +8,7 @@ namespace Asteroids
 	Button credits;
 	Button exitGame;
 	Button back;
+	Button pause;
 
 	void ButtonInit()
 	{
@@ -64,6 +65,16 @@ namespace Asteroids
 		back.textSize = 20;
 		back.fontSize = 30;
 		back.spacing = 2;
+
+		pause.position.x = 0;
+		pause.position.y = 0;
+		pause.size.y = 70;
+		pause.size.x = 70;
+		pause.textPosition.x = - 40;
+		pause.textPosition.y = - 20;
+		pause.textSize = 20;
+		pause.fontSize = 30;
+		pause.spacing = 2;
 	}
 
 	bool CheckCollisionMouseButton(Vector2 mousePosition, float buttonX, float buttonY, float buttonHeight, float buttonWidth)
@@ -106,6 +117,19 @@ namespace Asteroids
 			if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
 			{
 				currentScreen = Screen::Menu;
+			}
+		}
+	}
+
+	void IsMousePressingPauseButton()
+	{
+		Vector2 mousePosition = GetMousePosition();
+
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			if (CheckCollisionMouseButton(mousePosition, pause.position.x, pause.position.y, pause.size.y, pause.size.x))
+			{
+				currentScreen = Screen::Pause;
 			}
 		}
 	}
@@ -187,16 +211,16 @@ namespace Asteroids
 	{
 		Vector2 mousePosition = GetMousePosition();
 #ifdef _DEBUG
-		DrawRectangleV(back.position, back.size, VIOLET);
+		DrawRectangleV(pause.position, pause.size, VIOLET);
 #endif
-		DrawTextureEx(pauseButton, back.textPosition, 0, 0.07f, WHITE);
+		DrawTextureEx(pauseButton, pause.textPosition, 0, 0.07f, WHITE);
 
-		if (CheckCollisionMouseButton(mousePosition, back.position.x, back.position.y, back.size.y, back.size.x))
+		if (CheckCollisionMouseButton(mousePosition, pause.position.x, pause.position.y, pause.size.y, pause.size.x))
 		{
 #ifdef _DEBUG
-			DrawRectangleV(back.position, back.size, BLUE);
+			DrawRectangleV(pause.position, pause.size, BLUE);
 #endif
-			DrawTextureEx(pauseButtonPressed, back.textPosition, 0, 0.07f, WHITE);
+			DrawTextureEx(pauseButtonPressed, pause.textPosition, 0, 0.07f, WHITE);
 		}
 	}
 
