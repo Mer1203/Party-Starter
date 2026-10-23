@@ -2,7 +2,6 @@
 #include "ScreenPlay.h"
 #include "GameManager.h"
 #include "Button.h"
-#include "Game.h"
 #include "raylib.h"
 
 namespace Asteroids
