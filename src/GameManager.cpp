@@ -65,6 +65,8 @@ namespace Asteroids
 			break;
 		case Screen::Credits:
 			IsMousePressingBackButton();
+			IsMousePressingLinkButtons();
+			IsMousePressingBackButton();
 			break;
 		case Screen::Exit:
 			ExitUpdate(gameIsRunning);
@@ -86,7 +88,7 @@ namespace Asteroids
 		Texture2D creditsPressedButton, Texture2D exitPressedButton, Font font, Texture2D piñataOne, 
 		Texture2D piñataTwo,Texture2D piñataThree, Texture2D backButton, Texture2D backButtonPressed,
 		Texture2D pauseButton, Texture2D pauseButtonPressed, Texture2D pauseButtonScreen,
-		Texture2D pauseButtonScreenPressed)
+		Texture2D pauseButtonScreenPressed, Texture2D linkButton, Texture2D linkButtonPressed)
 	{
 		//DIBUJADO:
 		BeginDrawing();
@@ -104,11 +106,11 @@ namespace Asteroids
 			PauseButton(pauseButton, pauseButtonPressed);
 			break;
 		case Screen::Rules:
-			RulesDraw(backgroundGameplay);
+			RulesDraw(backgroundGameplay, font);
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Credits:
-			CreditsDraw(backgroundGameplay);
+			CreditsDraw(backgroundGameplay, font, linkButton, linkButtonPressed);
 			BackButton(backButton, backButtonPressed);
 			break;
 		case Screen::Exit:
