@@ -217,7 +217,7 @@ namespace Asteroids
 					{
 						bigAsteroid[j].isDestroyed = true;
 						bullets[i].isActive = false;
-						player.score++;
+						player.score += 1;
 
 						int quantity = 0;
 
@@ -255,7 +255,7 @@ namespace Asteroids
 					{
 						middleAsteroid[k].isDestroyed = true;
 						bullets[i].isActive = false;
-						player.score++;
+						player.score += 5;
 
 						int quantity = 0;
 
@@ -295,7 +295,7 @@ namespace Asteroids
 					{
 						smallAsteroid[k].isDestroyed = true;
 						bullets[i].isActive = false;
-						player.score++;
+						player.score += 10;
 						break;
 					}
 				}
