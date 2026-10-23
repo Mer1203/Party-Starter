@@ -8,6 +8,7 @@
 namespace Asteroids
 {
 	GameOver gameOverTExt;
+	GameOver pointsText;
 	GameOver retryButton;
 	GameOver menuButtonGO;
 
@@ -17,6 +18,11 @@ namespace Asteroids
 		gameOverTExt.text.y = 200;
 		gameOverTExt.fontSize = 100;
 		gameOverTExt.spacing = 2;
+
+		pointsText.text.x = 400;
+		pointsText.text.y = 120;
+		pointsText.fontSize = 80;
+		pointsText.spacing = 2;
 
 		retryButton.position.x = 380;
 		retryButton.position.y = 320;
@@ -37,7 +43,7 @@ namespace Asteroids
 		menuButtonGO.spacing = 2;
 	}
 
-	void GameOverUpdate(Texture2D canion)
+	void GameOverUpdate(Texture2D canion, Sound menuButtonsSound)
 	{
 		Vector2 mousePosition = GetMousePosition();
 
@@ -55,11 +61,21 @@ namespace Asteroids
 				}
 
 				currentScreen = Screen::Play;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 			else if (CheckCollisionMouseButton(mousePosition, menuButtonGO.position.x, menuButtonGO.position.y,
 				menuButtonGO.size.y, menuButtonGO.size.x))
 			{
 				currentScreen = Screen::Menu;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 		}
 	}
@@ -73,6 +89,7 @@ namespace Asteroids
 		GameplayDraw(backgroundGameplay, canion, confetti,
 			piniataOne, piniataTwo, piniataThree, font);
 
+		DrawTextEx(font, TextFormat("Score: %i", player.score), pointsText.text, pointsText.fontSize, pointsText.spacing, WHITE);
 		DrawTextEx(font, "GAME OVER!", gameOverTExt.text, gameOverTExt.fontSize, gameOverTExt.spacing, WHITE);
 
 #ifdef _DEBUG

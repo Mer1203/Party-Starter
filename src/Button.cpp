@@ -60,8 +60,8 @@ namespace Asteroids
 		back.position.y = 0;
 		back.size.y = 70;
 		back.size.x = 70;
-		back.textPosition.x = - 40;
-		back.textPosition.y = - 20;
+		back.textPosition.x = -40;
+		back.textPosition.y = -20;
 		back.textSize = 20;
 		back.fontSize = 30;
 		back.spacing = 2;
@@ -70,8 +70,8 @@ namespace Asteroids
 		pause.position.y = 0;
 		pause.size.y = 70;
 		pause.size.x = 70;
-		pause.textPosition.x = - 40;
-		pause.textPosition.y = - 20;
+		pause.textPosition.x = -40;
+		pause.textPosition.y = -20;
 		pause.textSize = 20;
 		pause.fontSize = 30;
 		pause.spacing = 2;
@@ -83,7 +83,7 @@ namespace Asteroids
 			&& mousePosition.y >= buttonY && mousePosition.y <= buttonY + buttonHeight;
 	}
 
-	void IsMousePressed()
+	void IsMousePressed(Sound menuButtonsSound)
 	{
 		Vector2 mousePosition = GetMousePosition();
 
@@ -92,18 +92,38 @@ namespace Asteroids
 			if (CheckCollisionMouseButton(mousePosition, play.position.x, play.position.y, play.size.y, play.size.x))
 			{
 				currentScreen = Screen::Play;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 			else if (CheckCollisionMouseButton(mousePosition, rules.position.x, rules.position.y, rules.size.y, rules.size.x))
 			{
 				currentScreen = Screen::Rules;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 			else if (CheckCollisionMouseButton(mousePosition, credits.position.x, credits.position.y, credits.size.y, credits.size.x))
 			{
 				currentScreen = Screen::Credits;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 			else if (CheckCollisionMouseButton(mousePosition, exitGame.position.x, exitGame.position.y, exitGame.size.y, exitGame.size.x))
 			{
 				currentScreen = Screen::Exit;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 		}
 	}

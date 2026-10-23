@@ -74,7 +74,7 @@ namespace Asteroids
 		DrawTextEx(font, "BACK TO MENU", menuButton.text, menuButton.fontSize, menuButton.spacing, WHITE);
 	}
 
-	void PauseUpdate()
+	void PauseUpdate(Sound menuButtonsSound)
 	{
 		Vector2 mousePosition = GetMousePosition();
 
@@ -84,11 +84,21 @@ namespace Asteroids
 				continueButton.size.y, continueButton.size.x))
 			{
 				currentScreen = Screen::Play;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 			else if (CheckCollisionMouseButton(mousePosition, menuButton.position.x, menuButton.position.y,
 				menuButton.size.y, menuButton.size.x))
 			{
 				currentScreen = Screen::Menu;
+
+				if (!IsSoundPlaying(menuButtonsSound))
+				{
+					PlaySound(menuButtonsSound);
+				}
 			}
 		}
 	}

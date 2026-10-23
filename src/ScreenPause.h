@@ -21,5 +21,5 @@ namespace Asteroids
 		Texture2D confetti, Texture2D piniataOne, Texture2D piniataTwo,
 		Texture2D piniataThree, Font font, Texture2D pauseButtonScreen,
 		Texture2D pauseButtonScreenPressed);
-	void PauseUpdate();
+	void PauseUpdate(Sound menuButtonsSound);
 }

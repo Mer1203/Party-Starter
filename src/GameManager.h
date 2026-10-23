@@ -24,5 +24,5 @@ namespace Asteroids
 		Texture2D pauseButton, Texture2D pauseButtonPressed, Texture2D pauseButtonScreen,
 		Texture2D pauseButtonScreenPressed);
 
-	void Update(float delta, bool& gameIsRunning, Texture2D canion);
+	void Update(float delta, bool& gameIsRunning, Texture2D canion, Sound menuButtonsSound);
 }

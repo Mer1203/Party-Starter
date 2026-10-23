@@ -16,7 +16,7 @@ namespace Asteroids
 {
 	Screen currentScreen = Screen::Menu;
 
-	void Update(float delta, bool& gameIsRunning, Texture2D canion)
+	void Update(float delta, bool& gameIsRunning, Texture2D canion, Sound menuButtonsSound)
 	{
 		// UPDATE:
 		switch (currentScreen)
@@ -26,7 +26,7 @@ namespace Asteroids
 			ButtonInit();
 			PauseInit();
 			GameOverInit();
-			IsMousePressed();
+			IsMousePressed(menuButtonsSound);
 			MenuInit();
 
 			GameplayInit();
@@ -70,10 +70,10 @@ namespace Asteroids
 			ExitUpdate(gameIsRunning);
 			break;
 		case Screen::GameOver:
-			GameOverUpdate(canion);
+			GameOverUpdate(canion, menuButtonsSound);
 			break;
 		case Screen::Pause:
-			PauseUpdate();
+			PauseUpdate(menuButtonsSound);
 			break;
 		default:
 			break;
@@ -96,7 +96,8 @@ namespace Asteroids
 		{
 		case Screen::Menu:
 			MenuDraw(backgroundMenu, playButton, rulesButton, creditsButton, exitButton, 
-				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
+				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, 
+				font);
 			break;
 		case Screen::Play:
 			GameplayDraw(backgroundGameplay, canion, confetti, piñataOne, piñataTwo, piñataThree, font);

@@ -25,7 +25,7 @@ namespace Asteroids
 	void ButtonInit();
 
 	bool CheckCollisionMouseButton(Vector2 mousePosition, float buttonX, float buttonY, float buttonHeight, float buttonWidth);
-	void IsMousePressed();
+	void IsMousePressed(Sound menuButtonsSound);
 	void IsMousePressingBackButton();
 	void IsMousePressingPauseButton();
 

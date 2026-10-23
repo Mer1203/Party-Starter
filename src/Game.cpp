@@ -15,8 +15,12 @@ namespace Asteroids
 		bool gameIsRunning = true;
 
 		InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Party Starter!");
+		InitAudioDevice();
 
+		//FONT
 		Font font = LoadFontEx("res/Font/Super Wonder.ttf", 200, NULL, 0);
+
+		//ASSETS
 		Texture2D backgroundMenu = LoadTexture("res/Backgrounds/BackgroundMenu.png");
 		Texture2D backgroundGameplay = LoadTexture("res/Backgrounds/BackgroundTwo_Gameplay.png");
 		Texture2D canion = LoadTexture("res/Ship/Canion.png");
@@ -39,10 +43,13 @@ namespace Asteroids
 		Texture2D piñataTwo = LoadTexture("res/Asteroids/PiniataTwo.png");
 		Texture2D piñataThree = LoadTexture("res/Asteroids/PiniataThree.png");
 
+		//SOUNDS
+		Sound menuButtonsSound = LoadSound("res/Sounds/meme-camioneta-payaso.mp3");
+
 		while (!WindowShouldClose() && gameIsRunning)
 		{
 			delta = GetFrameTime();
-			Update(delta, gameIsRunning, canion);
+			Update(delta, gameIsRunning, canion, menuButtonsSound);
 
 			Draw(backgroundMenu, backgroundGameplay, canion, confetti, playButton, rulesButton, creditsButton, exitButton,
 				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font, piñataOne, 
@@ -51,7 +58,28 @@ namespace Asteroids
 		}
 
 		UnloadTexture(backgroundMenu);
+		UnloadTexture(backgroundGameplay);
+		UnloadTexture(canion);
+		UnloadTexture(confetti);
+		UnloadTexture(playButton);
+		UnloadTexture(rulesButton);
+		UnloadTexture(creditsButton);
+		UnloadTexture(exitButton);
+		UnloadTexture(backButton);
+		UnloadTexture(pauseButton);
+		UnloadTexture(pauseButtonScreen);
+		UnloadTexture(playPressedButton);
+		UnloadTexture(rulesPressedButton);
+		UnloadTexture(creditsPressedButton);
+		UnloadTexture(exitPressedButton);
+		UnloadTexture(backButtonPressed);
+		UnloadTexture(pauseButtonPressed);
+		UnloadTexture(pauseButtonScreenPressed);
+		UnloadTexture(piñataOne);
+		UnloadTexture(piñataTwo);
+		UnloadTexture(piñataThree);
 
+		CloseAudioDevice();
 		CloseWindow();
 	}
 }
