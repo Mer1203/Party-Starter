@@ -1,4 +1,5 @@
 #pragma once
+#include "Asteroids.h"
 #include "raylib.h"
 
 namespace Asteroids
@@ -25,8 +26,8 @@ namespace Asteroids
 
 	const int MAX_PLAYER_SPEED = 300;
 
+	void PlayerGameOver(Asteroids& asteroid);
 	void PlayerInit(Texture2D canion);
 	void PlayerUpdate(float delta);
 	void PlayerDraw(Texture2D canion);
-	void PlayerGameOver();
 }

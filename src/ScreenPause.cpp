@@ -74,7 +74,7 @@ namespace Asteroids
 		DrawTextEx(font, "BACK TO MENU", menuButton.text, menuButton.fontSize, menuButton.spacing, WHITE);
 	}
 
-	void IsMousePressingButtonPause()
+	void PauseUpdate()
 	{
 		Vector2 mousePosition = GetMousePosition();
 

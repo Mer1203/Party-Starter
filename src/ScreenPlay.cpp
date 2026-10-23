@@ -49,7 +49,7 @@ namespace Asteroids
 		DrawTextEx(font, TextFormat("Score: %i", player.score), pointsTextTwo.text, pointsTextTwo.fontSize, pointsTextTwo.spacing, BLACK);
 		DrawTextEx(font, TextFormat("Score: %i", player.score), pointsTextOne.text, pointsTextOne.fontSize, pointsTextOne.spacing, WHITE);
 
-		DrawTextEx(font, TextFormat("Score: %i", player.score), livesTextOne.text, livesTextOne.fontSize, livesTextOne.spacing, BLACK);
-		DrawTextEx(font, TextFormat("Score: %i", player.score), livesTextTwo.text, livesTextTwo.fontSize, livesTextTwo.spacing, WHITE);
+		DrawTextEx(font, TextFormat("Lives: %i", player.lives), livesTextOne.text, livesTextOne.fontSize, livesTextOne.spacing, BLACK);
+		DrawTextEx(font, TextFormat("Lives: %i", player.lives), livesTextTwo.text, livesTextTwo.fontSize, livesTextTwo.spacing, WHITE);
 	}
 }

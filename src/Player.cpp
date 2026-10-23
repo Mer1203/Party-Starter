@@ -43,6 +43,27 @@ namespace Asteroids
 		canionDestination.height = 100;
 	}
 
+	void PlayerGameOver(Asteroids& asteroid)
+	{
+		if (asteroid.isDestroyed == true)
+		{
+			return;
+		}
+
+		bool inCollision = CollisionCircleCircle(player.position, player.radius, asteroid.position, asteroid.radius);
+
+		if (inCollision)
+		{
+			asteroid.isDestroyed = true;
+			player.lives--;
+		}
+
+		if (player.lives <= 0)
+		{
+			currentScreen = Screen::GameOver;
+		}
+	}
+
 	void PlayerUpdate(float delta)
 	{
 		Vector2 mousePosition = GetMousePosition();
@@ -114,24 +135,6 @@ namespace Asteroids
 
 	}
 
-	void PlayerGameOver(Asteroids asteroid)
-	{
-		bool inCollision = false;
-
-		inCollision = CollisionCircleCircle(player.position, player.radius, asteroid.position, asteroid.radius);
-
-		if (inCollision)
-		{
-			player.lives--;
-			asteroid.isDestroyed = true;
-		}
-
-		if (player.lives == 0)
-		{
-			Screen::GameOver;
-		}
-
-	}
 
 	void PlayerDraw(Texture2D canion)
 	{

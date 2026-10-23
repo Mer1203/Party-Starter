@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "ScreenGameOver.h"
 #include "ScreenCredits.h"
 #include "ScreenRules.h"
 #include "ScreenPause.h"
@@ -24,9 +25,10 @@ namespace Asteroids
 			//Inicio los valores de todos los botones:
 			ButtonInit();
 			PauseInit();
+			GameOverInit();
 			IsMousePressed();
-
 			MenuInit();
+
 			GameplayInit();
 			PlayerInit(canion);
 			AsteroidsInitAll();
@@ -41,6 +43,22 @@ namespace Asteroids
 			ShotBullet(delta);
 			AsteroidsUpdate(delta);
 			IsMousePressingPauseButton();
+
+			for (int i = 0; i < MAX_ASTEROIDS; i++)
+			{
+				PlayerGameOver(bigAsteroid[i]);
+			}
+
+			for (int i = 0; i < MAX_ASTEROIDS; i++)
+			{
+				PlayerGameOver(middleAsteroid[i]);
+			}
+
+			for (int i = 0; i < MAX_ASTEROIDS; i++)
+			{
+				PlayerGameOver(smallAsteroid[i]);
+			}
+
 			break;
 		case Screen::Rules:
 			IsMousePressingBackButton();
@@ -52,9 +70,10 @@ namespace Asteroids
 			ExitUpdate(gameIsRunning);
 			break;
 		case Screen::GameOver:
+			GameOverUpdate(canion);
 			break;
 		case Screen::Pause:
-			IsMousePressingButtonPause();
+			PauseUpdate();
 			break;
 		default:
 			break;
@@ -94,6 +113,9 @@ namespace Asteroids
 		case Screen::Exit:
 			break;
 		case Screen::GameOver:
+			GameOverDraw(backgroundGameplay, canion, confetti,
+				piñataOne, piñataTwo, piñataThree, font, pauseButtonScreen,
+				pauseButtonScreenPressed);
 			break;
 		case Screen::Pause:
 			PauseDraw(backgroundGameplay, canion, confetti,

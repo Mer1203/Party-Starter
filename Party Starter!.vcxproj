@@ -156,6 +156,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\ScreenCredits.cpp" />
     <ClCompile Include="src\ScreenExit.cpp" />
+    <ClCompile Include="src\ScreenGameOver.cpp" />
     <ClCompile Include="src\ScreenMenu.cpp" />
     <ClCompile Include="src\ScreenPause.cpp" />
     <ClCompile Include="src\ScreenPlay.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\ScreenCredits.h" />
     <ClInclude Include="src\ScreenExit.h" />
+    <ClInclude Include="src\ScreenGameOver.h" />
     <ClInclude Include="src\ScreenMenu.h" />
     <ClInclude Include="src\ScreenPause.h" />
     <ClInclude Include="src\ScreenPlay.h" />
