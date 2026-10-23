@@ -8,6 +8,8 @@ namespace Asteroids
 {
 	Text pointsTextOne;
 	Text pointsTextTwo;
+	Text livesTextOne;
+	Text livesTextTwo;
 
 	void GameplayInit()
 	{
@@ -20,6 +22,16 @@ namespace Asteroids
 		pointsTextTwo.text.y = 20;
 		pointsTextTwo.fontSize = 30;
 		pointsTextTwo.spacing = 2;
+		
+		livesTextOne.text.x = 80;
+		livesTextOne.text.y = 20;
+		livesTextOne.fontSize = 30;
+		livesTextOne.spacing = 2;
+
+		livesTextTwo.text.x = 82;
+		livesTextTwo.text.y = 20;
+		livesTextTwo.fontSize = 30;
+		livesTextTwo.spacing = 2;
 	}
 
 	void GameplayDraw(Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti, 
@@ -36,5 +48,8 @@ namespace Asteroids
 
 		DrawTextEx(font, TextFormat("Score: %i", player.score), pointsTextTwo.text, pointsTextTwo.fontSize, pointsTextTwo.spacing, BLACK);
 		DrawTextEx(font, TextFormat("Score: %i", player.score), pointsTextOne.text, pointsTextOne.fontSize, pointsTextOne.spacing, WHITE);
+
+		DrawTextEx(font, TextFormat("Score: %i", player.score), livesTextOne.text, livesTextOne.fontSize, livesTextOne.spacing, BLACK);
+		DrawTextEx(font, TextFormat("Score: %i", player.score), livesTextTwo.text, livesTextTwo.fontSize, livesTextTwo.spacing, WHITE);
 	}
 }

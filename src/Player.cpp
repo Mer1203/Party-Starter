@@ -1,4 +1,7 @@
 #include "Player.h"
+#include "Collision.h"
+#include "Asteroids.h"
+#include "GameManager.h"
 #include "Game.h"
 #include "raylib.h"
 #include "raymath.h"
@@ -22,6 +25,7 @@ namespace Asteroids
 		player.width = 100;
 		player.rotation = 0.0f;
 		player.score = 0;
+		player.lives = 3;
 
 		rectangle.x = player.position.x;
 		rectangle.y = player.position.y;
@@ -106,6 +110,25 @@ namespace Asteroids
 		else if (player.position.y < 0)
 		{
 			player.position.y = WINDOW_HEIGHT;
+		}
+
+	}
+
+	void PlayerGameOver(Asteroids asteroid)
+	{
+		bool inCollision = false;
+
+		inCollision = CollisionCircleCircle(player.position, player.radius, asteroid.position, asteroid.radius);
+
+		if (inCollision)
+		{
+			player.lives--;
+			asteroid.isDestroyed = true;
+		}
+
+		if (player.lives == 0)
+		{
+			Screen::GameOver;
 		}
 
 	}

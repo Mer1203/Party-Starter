@@ -9,6 +9,7 @@ namespace Asteroids
 		Vector2 direction;
 		Vector2 speed;
 		int score;
+		int lives;
 		int height;
 		int width;
 		float rotation;
@@ -27,4 +28,5 @@ namespace Asteroids
 	void PlayerInit(Texture2D canion);
 	void PlayerUpdate(float delta);
 	void PlayerDraw(Texture2D canion);
+	void PlayerGameOver();
 }
