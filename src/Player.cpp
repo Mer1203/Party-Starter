@@ -21,6 +21,7 @@ namespace Asteroids
 		player.height = 100;
 		player.width = 100;
 		player.rotation = 0.0f;
+		player.score = 0;
 
 		rectangle.x = player.position.x;
 		rectangle.y = player.position.y;
@@ -120,4 +121,7 @@ namespace Asteroids
 
 		DrawTexturePro(canion, canionSource, canionDestination, { rectangle.width / 2, rectangle.height / 2 }, player.rotation, WHITE);
 	}
+
+
+
 }

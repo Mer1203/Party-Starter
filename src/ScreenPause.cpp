@@ -56,7 +56,7 @@ namespace Asteroids
 		Vector2 mousePosition = GetMousePosition();
 
 		GameplayDraw(backgroundGameplay, canion, confetti,
-			piniataOne, piniataTwo, piniataThree);
+			piniataOne, piniataTwo, piniataThree, font);
 
 		DrawTextEx(font, "PAUSE", pauseText.text, pauseText.fontSize, pauseText.spacing, WHITE);
 

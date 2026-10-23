@@ -27,6 +27,7 @@ namespace Asteroids
 			IsMousePressed();
 
 			MenuInit();
+			GameplayInit();
 			PlayerInit(canion);
 			AsteroidsInitAll();
 			for (int i = 0; i < MAX_BULLETS; i++)
@@ -80,7 +81,7 @@ namespace Asteroids
 				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font);
 			break;
 		case Screen::Play:
-			GameplayDraw(backgroundGameplay, canion, confetti, piñataOne, piñataTwo, piñataThree);
+			GameplayDraw(backgroundGameplay, canion, confetti, piñataOne, piñataTwo, piñataThree, font);
 			PauseButton(pauseButton, pauseButtonPressed);
 			break;
 		case Screen::Rules:
