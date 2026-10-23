@@ -40,7 +40,6 @@ namespace Asteroids
 			PlayerUpdate(delta);
 			ShotBullet(delta);
 			AsteroidsUpdate(delta);
-			PauseUpdate();
 			IsMousePressingPauseButton();
 			break;
 		case Screen::Rules:

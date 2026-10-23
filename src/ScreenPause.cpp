@@ -36,19 +36,6 @@ namespace Asteroids
 		menuButton.spacing = 2;
 	}
 
-	void PauseUpdate()
-	{
-		Vector2 mousePosition = GetMousePosition();
-
-		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-		{
-			if (CheckCollisionMouseButton(mousePosition, play.position.x, play.position.y, play.size.y, play.size.x))
-			{
-				currentScreen = Screen::Play;
-			}
-		}
-	}
-
 	void PauseDraw(Texture2D backgroundGameplay, Texture2D canion, Texture2D confetti,
 		Texture2D piniataOne, Texture2D piniataTwo, Texture2D piniataThree, Font font,
 		Texture2D pauseButtonScreen, Texture2D pauseButtonScreenPressed)

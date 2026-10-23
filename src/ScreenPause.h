@@ -17,7 +17,6 @@ namespace Asteroids
 	extern Pause menuButton;
 
 	void PauseInit();
-	void PauseUpdate();
 	void PauseDraw(Texture2D backgroundGameplay, Texture2D canion, 
 		Texture2D confetti, Texture2D piniataOne, Texture2D piniataTwo,
 		Texture2D piniataThree, Font font, Texture2D pauseButtonScreen,
