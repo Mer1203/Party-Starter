@@ -46,6 +46,10 @@ namespace Asteroids
 		//SOUNDS
 		Sound menuButtonsSound = LoadSound("res/Sounds/meme-camioneta-payaso.mp3");
 
+		//LINKS
+		Texture2D linkButton = LoadTexture("res/Buttons/LINK_BUTTON.png");
+		Texture2D linkButtonPressed = LoadTexture("res/Buttons/LINK_BUTTON_PRESSED.png");
+
 		while (!WindowShouldClose() && gameIsRunning)
 		{
 			delta = GetFrameTime();
@@ -54,7 +58,7 @@ namespace Asteroids
 			Draw(backgroundMenu, backgroundGameplay, canion, confetti, playButton, rulesButton, creditsButton, exitButton,
 				playPressedButton, rulesPressedButton, creditsPressedButton, exitPressedButton, font, piñataOne, 
 				piñataTwo, piñataThree, backButton, backButtonPressed, pauseButton, pauseButtonPressed, pauseButtonScreen,
-				pauseButtonScreenPressed);
+				pauseButtonScreenPressed, linkButton, linkButtonPressed);
 		}
 
 		UnloadTexture(backgroundMenu);
